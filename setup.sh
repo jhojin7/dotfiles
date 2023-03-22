@@ -46,6 +46,7 @@ sudo apt install \
 	tldr \
 	ncal \
 	tree \
+	gh \
 
 # update tldr
 tldr -u

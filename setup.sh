@@ -47,6 +47,7 @@ sudo apt install \
 	ncal \
 	tree \
 
+# update tldr
 tldr -u
 # touch .hushlogin
 touch ~/.hushlogin
@@ -55,22 +56,19 @@ touch ~/.hushlogin
 export TERMINAL=kitty
 
 # gnome-tweaks: 
-# swap esc caps lock
-# set altR as korean
-
-# install pfetch
-#wget https://raw.githubusercontent.com/dylanaraps/pfetch/master/pfetch
-#chmod +x pfetch
-#sudo mv pfetch /usr/local/bin
-#pfetch
-
-# link dotfiles
-# source different dotfiles
-
+#swap esc caps lock
+#set altR as korean
 # set up docker
 
+# install pfetch
+wget https://raw.githubusercontent.com/dylanaraps/pfetch/master/pfetch
+chmod +x pfetch
+sudo mv pfetch /usr/local/bin
+pfetch
+
+# link zshrc
+ln -s ~/dotfiles/zshrc ~/.zshrc
+source ~/.zshrc
 # link kitty.conf
 mkdir ~/.config/kitty
 ln -s ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
-# link zshrc
-ln -s ~/dotfiles/zshrc ~/.zshrc

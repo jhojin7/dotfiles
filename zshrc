@@ -10,6 +10,7 @@ export LANG=en_US.UTF-8
 export PATH=$HOME/.local/*:$HOME/usr/.local/*:$HOME/bin/*:/usr/local/bin/*:/usr/.local/*:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR='nvim'
+export VI_MODE_SET_CURSOR=true #https://unix.stackexchange.com/a/683991
 
 # local variables
 local myzshconfig="$HOME/.config/zsh"
@@ -23,11 +24,8 @@ fi
 
 plugins=(
 	git
-	#battery 
-	emoji
-	#zsh-syntax-highlighting
 	#zsh-autosuggestions
-) #thefuck
+)
 source $ZSH/oh-my-zsh.sh # NEEDED for loading plugins
 # $ZSH/plugins/. $ZSH_CUSTOM/plugins/.
 
@@ -40,9 +38,12 @@ export VI_MODE_SET_CURSOR=true
 ### MODE_INDICATOR="%F{white}+%f"
 ### INSERT_MODE_INDICATOR="%F{yellow}+%f"
 
+
 # Aliases
+alias zshconfig='nvim .zshrc && source .zshrc'
+alias sshpi='ssh pi@172.30.1.99'
 # https://dev.to/cassidoo/customizing-my-zsh-prompt-3417#comment-1p8gh
-source $myzshconfig/aliases.zsh
+#source $myzshconfig/aliases.zsh
 
 ############################
 ########## PROMPT ##########
@@ -55,7 +56,6 @@ local green(){echo "\e[32m${1}\e[0m"}
 local yellow(){echo "\e[33m${1}\e[0m"}
 
 local mycurdir='%F{12}%~%f';
-local endarrow='%F{10}➜%f';
 local findmybat(){
 	local capacity_=$(cat /sys/class/power_supply/BAT0/capacity)
 	local status_=$(cat /sys/class/power_supply/BAT0/status)
@@ -84,7 +84,10 @@ local findmybat(){
 		green $capacity_"%%"
 	fi
 }
-PROMPT='[$(findmybat)|$mycurdir]$endarrow '
+
+#local endarrow='%F{10}➜%f';
+local endarrow="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"
+PROMPT='[$(findmybat)|$mycurdir]$endarrow'
 #▲▼
 #source ~/coding/showbat.sh
 #PROMPT='[$(findmybat)|$mycurdir]$endarrow '

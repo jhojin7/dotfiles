@@ -69,3 +69,8 @@ export TERMINAL=kitty
 
 # set up docker
 
+# link kitty.conf
+mkdir ~/.config/kitty
+ln -s ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
+# link zshrc
+ln -s ~/dotfiles/zshrc ~/.zshrc

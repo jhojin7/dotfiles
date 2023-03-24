@@ -40,8 +40,9 @@ export VI_MODE_SET_CURSOR=true
 
 
 # Aliases
-alias zshconfig='nvim .zshrc && source .zshrc'
+alias zshconfig='nvim ~/dotfiles/zshrc && source ~/.zshrc'
 alias sshpi='ssh pi@172.30.1.99'
+alias c='clear'
 # https://dev.to/cassidoo/customizing-my-zsh-prompt-3417#comment-1p8gh
 #source $myzshconfig/aliases.zsh
 

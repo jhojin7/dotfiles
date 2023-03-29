@@ -8,6 +8,7 @@ uptime --pretty | lolcat
 # exports
 export LANG=en_US.UTF-8
 export PATH=$HOME/.local/*:$HOME/usr/.local/*:$HOME/bin/*:/usr/local/bin/*:/usr/.local/*:$PATH
+export PATH=$PATH:$HOME/.local/bin
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR='nvim'
 export VI_MODE_SET_CURSOR=true #https://unix.stackexchange.com/a/683991

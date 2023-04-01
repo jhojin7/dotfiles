@@ -48,6 +48,9 @@ sudo apt install \
 	tree \
 	gh \
 
+# more python stuff
+pip install numpy pandas
+
 # update tldr
 tldr -u
 # touch .hushlogin

@@ -14,7 +14,7 @@ export EDITOR='nvim'
 export VI_MODE_SET_CURSOR=true #https://unix.stackexchange.com/a/683991
 
 # local variables
-local myzshconfig="$HOME/.config/zsh"
+#local myzshconfig="$HOME/.config/zsh"
 
 # SSH default shell
 if [[ -n $SSH_CONNECTION ]]; then
@@ -41,9 +41,10 @@ export VI_MODE_SET_CURSOR=true
 
 
 # Aliases
-alias zshconfig='nvim ~/dotfiles/zshrc && source ~/.zshrc'
+alias zshconfig='nvim ~/.zshrc && source ~/.zshrc'
 alias sshpi='ssh pi@172.30.1.99'
 alias c='clear'
+alias t='tree'
 # https://dev.to/cassidoo/customizing-my-zsh-prompt-3417#comment-1p8gh
 #source $myzshconfig/aliases.zsh
 
@@ -87,9 +88,9 @@ local findmybat(){
 	fi
 }
 
-#local endarrow='%F{10}➜%f';
-local endarrow="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"
-PROMPT='[$(findmybat)|$mycurdir]$endarrow'
+#local endarrow="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"
+#PROMPT='[$(findmybat)|$mycurdir]$endarrow'
+ZSH_THEME='half-life'
 #▲▼
 #source ~/coding/showbat.sh
 #PROMPT='[$(findmybat)|$mycurdir]$endarrow '

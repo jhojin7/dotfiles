@@ -27,8 +27,8 @@ plugins=(
 	git
 	#zsh-autosuggestions
 )
+export ZSH_THEME='half-life'
 source $ZSH/oh-my-zsh.sh # NEEDED for loading plugins
-# $ZSH/plugins/. $ZSH_CUSTOM/plugins/.
 
 # vi mode
 # #https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vi-mode
@@ -90,7 +90,6 @@ local findmybat(){
 
 #local endarrow="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"
 #PROMPT='[$(findmybat)|$mycurdir]$endarrow'
-ZSH_THEME='half-life'
 #▲▼
 #source ~/coding/showbat.sh
 #PROMPT='[$(findmybat)|$mycurdir]$endarrow '

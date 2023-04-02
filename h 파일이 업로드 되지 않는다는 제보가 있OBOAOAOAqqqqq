@@ -1,0 +1,40 @@
+[1mdiff --git a/kitty/kitty.conf b/kitty/kitty.conf[m
+[1mindex 3f86691..a30644a 100644[m
+[1m--- a/kitty/kitty.conf[m
+[1m+++ b/kitty/kitty.conf[m
+[36m@@ -1,5 +1,9 @@[m
+[31m-#https://sw.kovidgoyal.net/kitty/conf/[m
+[32m+[m[32m# docs: https://sw.kovidgoyal.net/kitty/conf/[m
+[32m+[m[32m#font_family JetBrainsMono Nerd Font, NanumGothicCoding[m
+[32m+[m[32mfont_family JetbrainsMono Nerd Font, Noto Sans CJK KR[m
+ font_size 15[m
+[31m-# set font to JetBrainsMono nerdfonts[m
+[31m-font_family JetBrainsMono Nerd Font[m
+[31m-# korean font?[m
+[32m+[m
+[32m+[m[32mfont_features  # Disabling all font features for JetBrains Mono[m
+[32m+[m[32mfont_features +kern # Enable font kerning for NanumGothicCoding[m
+[32m+[m
+[32m+[m[32mlocale_map ko_KR.UTF-8 NanumGothicCoding # Map Korean locale to NanumGothicCoding font[m
+[1mdiff --git a/zshrc b/zshrc[m
+[1mindex b017684..271d849 100644[m
+[1m--- a/zshrc[m
+[1m+++ b/zshrc[m
+[36m@@ -27,8 +27,8 @@[m [mplugins=([m
+ 	git[m
+ 	#zsh-autosuggestions[m
+ )[m
+[32m+[m[32mexport ZSH_THEME='half-life'[m
+ source $ZSH/oh-my-zsh.sh # NEEDED for loading plugins[m
+[31m-# $ZSH/plugins/. $ZSH_CUSTOM/plugins/.[m
+ [m
+ # vi mode[m
+ # #https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vi-mode[m
+[36m@@ -90,7 +90,6 @@[m [mlocal findmybat(){[m
+ [m
+ #local endarrow="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"[m
+ #PROMPT='[$(findmybat)|$mycurdir]$endarrow'[m
+[31m-ZSH_THEME='half-life'[m
+ #▲▼[m
+ #source ~/coding/showbat.sh[m
+ #PROMPT='[$(findmybat)|$mycurdir]$endarrow '[m

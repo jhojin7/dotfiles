@@ -74,5 +74,5 @@ pfetch
 ln -s ~/dotfiles/zshrc ~/.zshrc
 source ~/.zshrc
 # link kitty.conf
-mkdir ~/.config/kitty
+mkdir -p ~/.config/kitty
 ln -s ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf

@@ -45,8 +45,11 @@ alias zshconfig='nvim ~/.zshrc && source ~/.zshrc'
 alias sshpi='ssh pi@172.30.1.99'
 alias c='clear'
 alias t='tree'
+alias boj='code ~/coding/problem-solving/boj.py'
 # https://dev.to/cassidoo/customizing-my-zsh-prompt-3417#comment-1p8gh
 #source $myzshconfig/aliases.zsh
+# docker
+alias dockerps='sudo docker ps'
 
 ############################
 ########## PROMPT ##########

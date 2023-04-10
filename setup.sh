@@ -32,6 +32,7 @@ sudo apt install \
 	# js
 	nodejs \
 	npm \
+	zoom \
 
 # misc utils
 sudo apt install \

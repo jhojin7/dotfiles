@@ -27,7 +27,9 @@ plugins=(
 	git
 	#zsh-autosuggestions
 )
-export ZSH_THEME='half-life'
+
+local themes=("half-life" "steeef" "sporty_256" "zhann" "crunch" "crcandy")
+export ZSH_THEME=${themes[3]}
 source $ZSH/oh-my-zsh.sh # NEEDED for loading plugins
 
 # vi mode
@@ -96,3 +98,4 @@ local findmybat(){
 #▲▼
 #source ~/coding/showbat.sh
 #PROMPT='[$(findmybat)|$mycurdir]$endarrow '
+RPROMPT=''

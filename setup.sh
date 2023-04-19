@@ -15,6 +15,7 @@ sudo apt install \
 	google-chrome-stable \
 	firefox \
 	gparted \
+	coreutils \
 
 # somewhat core
 sudo apt install \

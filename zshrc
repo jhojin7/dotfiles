@@ -30,7 +30,7 @@ plugins=(
 
 # local themes=("half-life" "steeef" "sporty_256" "zhann" "crunch" "crcandy")
 # export ZSH_THEME=${themes[3]}
-export ZSH_THEME='common'
+# export ZSH_THEME='common'
 source $ZSH/oh-my-zsh.sh # NEEDED for loading plugins
 
 # vi mode
@@ -103,6 +103,6 @@ local findmybat(){
 
 # starship theme config
 # https://starship.rs/guide/#%F0%9F%9A%80-installation
+
+
 eval "$(starship init zsh)"
-
-

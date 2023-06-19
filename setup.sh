@@ -16,6 +16,7 @@ sudo apt install \
 	firefox \
 	gparted \
 	coreutils \
+    net-tools \
 
 # somewhat core
 sudo apt install \
@@ -28,8 +29,8 @@ sudo apt install \
 	python3 \
 	python3-venv \
 	jupyter-notebook \
-	graphvis \
 	jupyter-nbconvert \
+	graphvis \
 	# js
 	nodejs \
 	npm \
@@ -48,7 +49,7 @@ sudo apt install \
 	tldr \
 	ncal \
 	tree \
-	gh \
+	#gh \
 
 # more python stuff
 pip install numpy pandas

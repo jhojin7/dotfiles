@@ -6,11 +6,10 @@
 uptime --pretty | lolcat
 
 # exports
+export PATH=$PATH:$HOME/.local/bin:$HOME/.local/mybin
 export LANG=en_US.UTF-8
-export PATH=$HOME/.local/*:$HOME/usr/.local/*:$HOME/bin/*:/usr/local/bin/*:/usr/.local/*:$PATH
-export PATH=$PATH:$HOME/.local/bin
+export HISTSIZE=100000
 export ZSH="$HOME/.oh-my-zsh"
-export EDITOR='nvim'
 export VI_MODE_SET_CURSOR=true #https://unix.stackexchange.com/a/683991
 
 # local variables
@@ -18,9 +17,9 @@ export VI_MODE_SET_CURSOR=true #https://unix.stackexchange.com/a/683991
 
 # SSH default shell
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-else
   export EDITOR='vi'
+else
+  export EDITOR='nvim'
 fi
 
 plugins=(
@@ -32,27 +31,41 @@ plugins=(
 # export ZSH_THEME=${themes[3]}
 # export ZSH_THEME='common'
 source $ZSH/oh-my-zsh.sh # NEEDED for loading plugins
-
 # vi mode
 # #https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vi-mode
 set -o vi
 ### bindkey -v
 ### export KEYTIMEOUT=1
-export VI_MODE_SET_CURSOR=true
 ### MODE_INDICATOR="%F{white}+%f"
 ### INSERT_MODE_INDICATOR="%F{yellow}+%f"
 
-
 # Aliases
-alias zshconfig='nvim ~/.zshrc && source ~/.zshrc'
-alias sshpi='ssh pi@172.30.1.99'
 alias c='clear'
-alias t='tree'
-alias boj='code ~/coding/problem-solving/boj.py'
+alias la='ls -a'
+alias ll='ls -alF'
+alias zshconfig='nvim ~/.zshrc && source ~/.zshrc'
+alias tmuxconfig='nvim ~/.config/tmux/tmux.conf && tmux source-file ~/.config/tmux/tmux.conf'
+alias sshpi='ssh pi@172.30.1.99'
+# https://www.youtube.com/watch?v=rjCvxTJ8Te4
+alias mv="mv -iv"
+alias rm="rm -v"
+alias boj='code ~/coding/problem-solving'
+alias clock="tty-clock -C4 -c -s"
+#alias vim="nvim"
+
+alias capstoneps='docker network inspect -f "{{json .Containers}}" sejong-reservation_default | jq'
+
 # https://dev.to/cassidoo/customizing-my-zsh-prompt-3417#comment-1p8gh
 #source $myzshconfig/aliases.zsh
-# docker
-alias dockerps='sudo docker ps'
+# alias histgrep="history | grep $$$$" # finds $$ in history
+# https://www.appsloveworld.com/bash/100/181/history-and-egrep-in-one-script
+histgrep() { history | egrep "$@";}
+# alias readme='if there is README.md in current directory,
+    # open readme file in default editor (or nvim),
+    # else just print out there is no readme file in this directory."
+
+
+
 
 ############################
 ########## PROMPT ##########
@@ -99,10 +112,13 @@ local findmybat(){
 #▲▼
 #source ~/coding/showbat.sh
 #PROMPT='[$(findmybat)|$mycurdir]$endarrow '
-#
+
+# launch tmux at sourcing zshrc
+# if [ -z "$TMUX" ]; then
+#     tmux
+# fi
 
 # starship theme config
 # https://starship.rs/guide/#%F0%9F%9A%80-installation
-
-
 eval "$(starship init zsh)"
+

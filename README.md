@@ -10,8 +10,8 @@
 - rclone + onedrive
     - Follow install instructions [here](https://www.sussex.ac.uk/its/help/guide.php?id=246)
     - gitignore .config/rcone/
-    -`rclone mount OneDrive:/ /home/jhojin/OneDrive --daemon`
-
+    - USE [`rclone {copy | sync}`](https://rclone.org/commands/rclone_copy/)!!! if local synced copies are needed.
+    - else use `mount` command.
 ## docker
 - https://get.docker.com/
 - Docker-only install helper script: https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script

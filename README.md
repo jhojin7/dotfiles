@@ -1,6 +1,9 @@
 # dotfiles
 
 ## TODO
+- change apt mirror to local mirrors
+- fstab config. mounting home,stuff,swap partitions
+- (maybe?) nix conifg?
 - Laptop hibernation
 - Touchpad gestures
 - syncthing setup (host + devices)

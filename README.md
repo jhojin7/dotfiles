@@ -1,7 +1,6 @@
 # dotfiles
 
 ## TODO
-- change apt mirror to local mirrors
 - fstab config. mounting home,stuff,swap partitions
 - (maybe?) nix conifg?
 - Laptop hibernation
@@ -9,6 +8,9 @@
 - syncthing setup (host + devices)
 - firewall (ufw)
 
+## ubuntu apt kakao mirror
+- https://askubuntu.com/a/1376664
+- https://gist.github.com/lesstif/8185f143ba7b8881e767900b1c8e98ad
 
 ## switch to workspace with `Super+i` (modified from [this answer](https://askubuntu.com/a/1295037))
 ```

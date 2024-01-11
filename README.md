@@ -9,6 +9,19 @@
 - syncthing setup (host + devices)
 - firewall (ufw)
 
+
+## switch to workspace with `Super+i` (modified from [this answer](https://askubuntu.com/a/1295037))
+```
+gsettings list-recursively | grep "gnome.*workspace"
+for i in {1..9}; do gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-$i "[]"; done
+for i in {1..9}; do gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"; done
+```
+- other workspace related config...
+```
+gsettings set org.gnome.desktop.wm.preferences num-workspaces 10
+gsettings set org.gnome.mutter dynamic-workspaces false
+```
+
 ## rlcone
 - rclone + onedrive
     - Follow install instructions [here](https://www.sussex.ac.uk/its/help/guide.php?id=246)

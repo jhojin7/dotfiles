@@ -1,12 +1,19 @@
 # dotfiles
 
 ## TODO
-- fstab config. mounting home,stuff,swap partitions
 - (maybe?) nix conifg?
 - Laptop hibernation
 - Touchpad gestures
 - syncthing setup (host + devices)
 - firewall (ufw)
+
+## - fstab config. mounting home,files,swap partitions
+```
+cat /etc/mtab
+sudo blkid or/and4 sudo lsblk
+sudo nvim /etc/fstab
+```
+- https://www.howtogeek.com/444814/how-to-write-an-fstab-file-on-linux/
 
 ## ubuntu apt kakao mirror
 - https://askubuntu.com/a/1376664

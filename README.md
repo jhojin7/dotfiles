@@ -7,6 +7,11 @@
 - syncthing setup (host + devices)
 - firewall (ufw)
 
+
+## ahk on windows
+- Win+r, `shell:startup`
+- move ahk files to folder
+
 ## - fstab config. mounting home,files,swap partitions
 ```
 cat /etc/mtab

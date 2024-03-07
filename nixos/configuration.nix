@@ -42,6 +42,7 @@
 		LC_TIME = "ko_KR.UTF-8";
 	};
 
+
 # Enable the X11 windowing system.
 	services.xserver.enable = true;
 
@@ -89,7 +90,6 @@
 		extraGroups = [ "networkmanager" "wheel" ];
 		packages = with pkgs; [
 			firefox
-#  thunderbird
 		];
 	};
 
@@ -105,16 +105,35 @@
 			curl
 			wget
 			neofetch
-			ibus
 			firefox
 			python3
 			ibus
+			ibus-engines
 			ibus-engines.hangul
 			google-chrome
 			vscode
 			gnome.gnome-tweaks
+			gh
 	];
+# KOREAN KEYBOARD!!!
+	i18n.inputMethod = {
+		enabled = "ibus";
+		ibus.engines = with pkgs.ibus-engines; [ 
+			hangul
+		];
+	};
 
+	fonts.packages = with pkgs; [
+		noto-fonts
+			noto-fonts-cjk
+			noto-fonts-emoji
+			liberation_ttf
+			fira-code
+			fira-code-symbols
+			mplus-outline-fonts.githubRelease
+			dina-font
+			proggyfonts
+	];
 
 
 # Some programs need SUID wrappers, can be configured further or are

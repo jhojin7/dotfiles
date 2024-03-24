@@ -55,7 +55,6 @@
 	services.xserver = {
 		layout = "us";
 		xkbVariant = "";
-#xkbOptions = [
 		xkb.options = "caps:none,caps:escape"; 
 	};
 
@@ -108,13 +107,20 @@
 			firefox
 			python3
 			ibus
-			ibus-engines
-			ibus-engines.hangul
+			#ibus-engines
+			#ibus-engines.hangul
 			google-chrome
 			vscode
 			gnome.gnome-tweaks
 			gh
+			docker
+			mysql80
+			mariadb_110
+
 	];
+
+	virtualisation.docker.enable = true;
+
 # KOREAN KEYBOARD!!!
 	i18n.inputMethod = {
 		enabled = "ibus";
@@ -143,6 +149,17 @@
 #   enable = true;
 #   enableSSHSupport = true;
 # };
+
+/*
+programs = {
+	dconf = {
+		enable = true;
+		profiles.user.databases = [
+		]
+
+	}
+}
+*/
 
 # List services that you want to enable:
 

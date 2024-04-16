@@ -6,6 +6,8 @@
 - Touchpad gestures
 - syncthing setup (host + devices)
 - firewall (ufw)
+- https://vonheikemen.github.io/devlog/tools/build-your-first-lua-config-for-neovim/
+- https://github.com/krapjost/nvim-lua-guide-kr
 
 
 ## ahk on windows
@@ -42,6 +44,7 @@ gsettings set org.gnome.mutter dynamic-workspaces false
     - gitignore .config/rcone/
     - USE [`rclone {copy | sync}`](https://rclone.org/commands/rclone_copy/)!!! if local synced copies are needed.
     - else use `mount` command.
+
 ## docker
 - https://get.docker.com/
 - Docker-only install helper script: https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script
@@ -49,6 +52,7 @@ gsettings set org.gnome.mutter dynamic-workspaces false
 
 ## fonts..
 - Install NerdFonts .zip files.
+- https://www.nerdfonts.com/font-downloads
 - unzip and `sudo cp *.ttf /usr/share/fonts/truetype`
 - update fonts `sudo fc-cache -fv`
 - verify font install `sudo fc-list | grep "JetBrains"`

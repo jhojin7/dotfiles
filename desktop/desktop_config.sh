@@ -11,6 +11,7 @@ sudo apt update
 sudo apt install -y ffmpeg obs-studio
 
 sudo snap install --classic code
+sudo snap install --classic nvim
 sudo snap install --classic intellij-idea-community
 
 

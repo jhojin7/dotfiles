@@ -44,6 +44,7 @@ gsettings set org.gnome.mutter dynamic-workspaces false
     - gitignore .config/rcone/
     - USE [`rclone {copy | sync}`](https://rclone.org/commands/rclone_copy/)!!! if local synced copies are needed.
     - else use `mount` command.
+- `rclone copy src:path dest:path --verbose --checksum --metadata --progress --dry-run`
 
 ## docker
 - https://get.docker.com/

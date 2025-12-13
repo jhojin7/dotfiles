@@ -1,52 +1,21 @@
-
--- line number
 vim.opt.number = true
--- line relative number
--- vim.opt.relativenumber = true
--- line wrap
-vim.opt.wrap = false
--- use mouse
-vim.opt.mouse = 'a'
--- highlight previous search results
-vim.opt.hlsearch = false
-
--- tab key as spaces
-vim.opt.expandtab = true
--- tab spaces
 vim.opt.tabstop = 4
--- tab spaces for << >>
-vim.opt.shiftwidth = 4
--- ???
-vim.opt.softtabstop = 4
+vim.opt.softtabstop=4
+vim.opt.shiftwidth=4
+vim.opt.expandtab=true
+vim.opt.termguicolors = true
 
--- leader key
+
+-- Set leader key (optional, space is a common choice)
 vim.g.mapleader = ' '
 
+-- Remap <leader>y to copy (yank) to the system clipboard
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], {noremap = true, desc = "Copy to system clipboard"})
 
--- lazy
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
-end
-vim.opt.rtp:prepend(lazypath)
+-- Remap <leader>p to paste from the system clipboard
+vim.keymap.set({"n", "v", "c"}, "<leader>p", [["+p]], {noremap = true, desc = "Paste from system clipboard"})
 
-require("lazy").setup({
-    {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {},
-    }
-    -- "folke/which-key.nvim",
-})
+-- -- Optional: Remap <leader>P to paste before the cursor from the system clipboard
+-- vim.keymap.set({"n", "v"}, "<leader>P", [["+P]], {noremap = true, silent = true, desc = "Paste before cursor from system clipboard"})
 
-
-vim.cmd[[colorscheme tokyonight]]
 

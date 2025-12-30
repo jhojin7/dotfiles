@@ -1,4 +1,8 @@
 font-size = 17
+# Primary font first, then D2Coding for Korean fallback
+font-family = "JetBrains Mono"
+# font-family = D2Coding
 shell-integration-features = no-cursor
 cursor-style = block 
 # https://github.com/ghostty-org/ghostty/issues/3402
+macos-option-as-alt = true # for opencode...

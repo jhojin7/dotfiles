@@ -5,4 +5,4 @@ font-family = "JetBrains Mono"
 shell-integration-features = no-cursor
 cursor-style = block 
 # https://github.com/ghostty-org/ghostty/issues/3402
-macos-option-as-alt = true # for opencode...
+macos-option-as-alt = true

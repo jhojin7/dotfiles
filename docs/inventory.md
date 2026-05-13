@@ -12,7 +12,7 @@ Branch: `spring-cleanup`
 | `profile` | config | shell profile | move/review | `config/profile/profile`, `stow/profile/.profile` | public-safe review |
 | `links.sh` | script | one-line symlink | rewrite | `scripts/link.sh` | idempotent required |
 | `legacy/setup.sh` | script | old setup | moved | `legacy/setup.sh` then `scripts/bootstrap-*` | moved from repo root; no direct trust |
-| `dev_config.sh` | script | dev package setup | archive/split | `legacy/dev_config.sh`, `packages/*` | package inventory |
+| `legacy/dev_config.sh` | script | dev package setup | moved | `legacy/dev_config.sh`, `packages/*` | moved from repo root; package inventory remains in `packages/` |
 | `legacy/startup.sh` | script | old startup | moved | `legacy/startup.sh` | moved from repo root; keep until reviewed |
 | `rclone-init.sh` | service/script | rclone setup | move/review | `services/rclone/` | never commit `rclone.conf` |
 | `desktop/` | linux | GNOME/desktop | move | `linux/gnome/` | Linux-specific |

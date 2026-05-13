@@ -4,9 +4,9 @@
 
 - timestamp: 2026-05-13
 - branch: spring-cleanup
-- files changed: removed `normalize-llm-punct-1.sh`, `normalize-llm-punct-2.sh`, `normalize-llm-punct-3.sh`; updated `docs/inventory.md`, `state/state.md`, `state/plan.md`
-- checks run: `git status --short`, `bash -n tools/bin/normalize-llm-punct`, `find ai tools -maxdepth 3 -type f | sort`, `find . -maxdepth 2 -name 'normalize-llm-punct*' | sort`
-- checks failed: none
+- files changed: added `scripts/link.sh`, removed `links.sh`, updated `docs/inventory.md`, `state/state.md`, `state/plan.md`
+- checks run: `bash -n scripts/*.sh`, `./scripts/link.sh --help`, `./scripts/link.sh --dry-run`, `./scripts/link.sh --status`, `./scripts/link.sh --stow --dry-run`
+- checks failed: none in repo code; explicit mode correctly reported existing home-directory conflicts without overwriting, and stow mode correctly reported missing `stow` command
 
 ## Current repo shape
 
@@ -20,6 +20,6 @@ none
 
 ## Next safe step
 
-Move from root cleanup into script implementation work, starting with `scripts/link.sh`.
+Add `scripts/doctor.sh` and have it report the current link conflicts as read-only findings.
 
-Ten structural cleanup tasks have been completed.
+Eleven structural cleanup tasks have been completed.

@@ -27,7 +27,7 @@ Branch: `spring-cleanup`
 | `hermes-agent/` | service | Hermes service glue | move | `services/hermes-agent/` | self-hosting |
 | `data-telescope.sh` | tool | large CLI | incubate | `tools/incubator/data-telescope/` | likely dedicated repo later |
 | `normalize-llm-punct-*.sh` | tool duplicates | utility versions | dedupe | `tools/bin/normalize-llm-punct` | choose canonical |
-| `open-in-vscode.sh` | macOS service | Finder/service helper | move | `macos/services/open-in-vscode.sh` | macOS-only |
+| `macos/services/open-in-vscode.sh` | macOS service | Finder/service helper | moved | `macos/services/open-in-vscode.sh` | moved from repo root |
 | `open-terminal-here.sh` | macOS service | Finder/service helper | move | `macos/services/open-terminal-here.sh` | macOS-only |
 
 ## New first-class docs

@@ -4,9 +4,9 @@
 
 - timestamp: 2026-05-13
 - branch: spring-cleanup
-- files changed: .gitignore
-- checks run: `git status --short`, `git check-ignore -v oauth-client.json .docker/config.json .config/tailscale/state.conf id_ecdsa sample/tailscale/node.state`, `grep -RInE '(api[_-]?key|token|secret|password|cookie|bearer|oauth|private_key|client_secret|authkey|tailnet)' .`
-- checks failed: none; ignore patterns matched expected sample paths and secret scan returned false positives in policy docs, sample git hooks, and code identifiers only
+- files changed: `open-in-vscode.sh` -> `macos/services/open-in-vscode.sh`, `docs/inventory.md`, `state/state.md`, `state/notes.md`
+- checks run: `git status --short`, `bash -n macos/services/open-in-vscode.sh`, `find macos -maxdepth 3 -type f | sort`
+- checks failed: none
 
 ## Current repo shape
 
@@ -17,7 +17,6 @@ Known root cleanup targets:
 ```text
 data-telescope.sh
 normalize-llm-punct-*.sh
-open-in-vscode.sh
 open-terminal-here.sh
 hermes-agent/
 setup.sh
@@ -28,6 +27,6 @@ rclone-init.sh
 
 ## Next safe step
 
-Move one root script into its target folder with `git mv`.
+Move another root script into its target folder, starting with a reviewed macOS or service helper.
 
-No file moves yet.
+One root script has been moved.

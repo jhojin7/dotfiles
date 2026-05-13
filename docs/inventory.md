@@ -25,7 +25,7 @@ Branch: `spring-cleanup`
 | `opencode/` | config | AI tool config | review/move | `config/opencode/`, `stow/opencode/` | check secrets |
 | `ai/` | mixed | currently contains tool script | rewrite | `ai/` | rules/prompts/skills only |
 | `services/hermes-agent/` | service | Hermes service glue | moved | `services/hermes-agent/` | moved from repo root |
-| `data-telescope.sh` | tool | large CLI | incubate | `tools/incubator/data-telescope/` | likely dedicated repo later |
+| `tools/incubator/data-telescope/data-telescope.sh` | tool | large CLI | moved | `tools/incubator/data-telescope/` | moved from repo root; likely dedicated repo later |
 | `normalize-llm-punct-*.sh` | tool duplicates | utility versions | dedupe | `tools/bin/normalize-llm-punct` | choose canonical |
 | `macos/services/open-in-vscode.sh` | macOS service | Finder/service helper | moved | `macos/services/open-in-vscode.sh` | moved from repo root |
 | `open-terminal-here.sh` | macOS service | Finder/service helper | move | `macos/services/open-terminal-here.sh` | macOS-only |

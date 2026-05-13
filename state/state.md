@@ -4,8 +4,8 @@
 
 - timestamp: 2026-05-13
 - branch: spring-cleanup
-- files changed: `open-terminal-here.sh` -> `macos/services/open-terminal-here.sh`, `docs/inventory.md`, `state/state.md`
-- checks run: `git status --short`, `bash -n macos/services/open-terminal-here.sh`, `find macos -maxdepth 3 -type f | sort`
+- files changed: `rclone-init.sh` -> `services/rclone/rclone-init.sh`, `docs/inventory.md`, `state/state.md`
+- checks run: `git status --short`, `bash -n services/rclone/rclone-init.sh`, `find services -maxdepth 3 -type f | sort`
 - checks failed: none
 
 ## Current repo shape
@@ -16,11 +16,10 @@ Known root cleanup targets:
 
 ```text
 normalize-llm-punct-*.sh
-rclone-init.sh
 ```
 
 ## Next safe step
 
-Move the remaining approved root helper, then reassess the punctuation dedupe work separately.
+Reassess the remaining root scripts. Only the punctuation-normalizer duplicates remain in root, so the next bounded task is comparison and canonicalization rather than another mechanical move.
 
-Seven move tasks have been completed.
+Eight move tasks have been completed.

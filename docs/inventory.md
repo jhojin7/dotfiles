@@ -14,7 +14,7 @@ Branch: `spring-cleanup`
 | `legacy/setup.sh` | script | old setup | moved | `legacy/setup.sh` then `scripts/bootstrap-*` | moved from repo root; no direct trust |
 | `legacy/dev_config.sh` | script | dev package setup | moved | `legacy/dev_config.sh`, `packages/*` | moved from repo root; package inventory remains in `packages/` |
 | `legacy/startup.sh` | script | old startup | moved | `legacy/startup.sh` | moved from repo root; keep until reviewed |
-| `rclone-init.sh` | service/script | rclone setup | move/review | `services/rclone/` | never commit `rclone.conf` |
+| `services/rclone/rclone-init.sh` | service/script | rclone setup | moved | `services/rclone/` | moved from repo root; never commit `rclone.conf` or assume auth in automation |
 | `desktop/` | linux | GNOME/desktop | move | `linux/gnome/` | Linux-specific |
 | `gnome/` | linux | GNOME helper | move | `linux/gnome/` | Linux-specific |
 | `nixos/` | linux | NixOS config | move | `linux/nixos/` | no Home Manager dotfiles |

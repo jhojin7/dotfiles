@@ -4,8 +4,8 @@
 
 - timestamp: 2026-05-13
 - branch: spring-cleanup
-- files changed: `data-telescope.sh` -> `tools/incubator/data-telescope/data-telescope.sh`, `docs/inventory.md`, `state/state.md`
-- checks run: `git status --short`, `bash -n tools/incubator/data-telescope/data-telescope.sh`, `find tools -maxdepth 4 -type f | sort`
+- files changed: `open-terminal-here.sh` -> `macos/services/open-terminal-here.sh`, `docs/inventory.md`, `state/state.md`
+- checks run: `git status --short`, `bash -n macos/services/open-terminal-here.sh`, `find macos -maxdepth 3 -type f | sort`
 - checks failed: none
 
 ## Current repo shape
@@ -16,12 +16,11 @@ Known root cleanup targets:
 
 ```text
 normalize-llm-punct-*.sh
-open-terminal-here.sh
 rclone-init.sh
 ```
 
 ## Next safe step
 
-Review the remaining root scripts individually before moving more. `open-terminal-here.sh` includes a permanent-delete workflow and `rclone-init.sh` assumes authenticated OneDrive mounts.
+Move the remaining approved root helper, then reassess the punctuation dedupe work separately.
 
-Six move tasks have been completed.
+Seven move tasks have been completed.

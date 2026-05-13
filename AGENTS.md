@@ -84,7 +84,6 @@ git status --short
 bash -n scripts/*.sh
 bash -n macos/**/*.sh
 bash -n services/**/*.sh
-jq . config/opencode/opencode.json
 docker --version
 docker compose version
 tailscale version

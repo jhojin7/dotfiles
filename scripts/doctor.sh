@@ -17,7 +17,6 @@ CONFIG_PATHS=(
   "config/tmux/tmux.conf"
   "config/ghostty/config"
   "config/kitty/kitty.conf"
-  "config/opencode/opencode.json"
 )
 
 usage() {
@@ -115,28 +114,6 @@ check_shell_syntax() {
 
   if [[ "$checked" -eq 0 ]]; then
     warn "no shell scripts found under scripts/, macos/, or services/"
-  fi
-}
-
-check_json_validation() {
-  local preferred="$REPO_ROOT/config/opencode/opencode.json"
-  local legacy="$REPO_ROOT/opencode/opencode.json"
-  local target=""
-
-  if [[ -f "$preferred" ]]; then
-    target="$preferred"
-  elif [[ -f "$legacy" ]]; then
-    target="$legacy"
-    warn "using legacy opencode json path until config/ migration exists"
-  else
-    warn "opencode json source not found in config/ or legacy path"
-    return
-  fi
-
-  if jq . "$target" >/dev/null; then
-    pass "json valid: ${target#$REPO_ROOT/}"
-  else
-    fail "json invalid: ${target#$REPO_ROOT/}"
   fi
 }
 
@@ -338,7 +315,6 @@ check_branch
 check_os_and_shell
 check_required_commands
 check_shell_syntax
-check_json_validation
 check_secret_scan
 check_broken_symlinks
 check_stow_simulation

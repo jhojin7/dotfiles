@@ -20,9 +20,16 @@ tmp/
 *.mobileconfig
 id_rsa
 id_ed25519
+id_ecdsa
+id_dsa
+id_xmss
 *.kdbx
 *.age
 *.gpg
+oauth*.json
+oauth*.yaml
+oauth*.yml
+*.oauth
 
 # auth/session/provider state
 .aws/
@@ -38,19 +45,24 @@ id_ed25519
 .pypirc
 
 # Docker auth/state
+.docker/
 .docker/config.json
 docker/config.json
 **/docker/config.json
 **/.docker/
+**/docker-desktop-data/
 **/volumes/
 **/data/
 **/.env
 
 # Tailscale auth/state
+.tailscale/
+.config/tailscale/
 tailscaled.state
 tailscale.state
 **/tailscaled.state
 **/tailscale.state
+**/tailscale/*.state
 **/*authkey*
 **/*tailnet*
 

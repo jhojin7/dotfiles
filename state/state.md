@@ -4,9 +4,9 @@
 
 - timestamp: 2026-05-13
 - branch: spring-cleanup
-- files changed: docs/architecture.md, docs/tools.md, docs/ai.md, docs/macos.md, docs/linux.md, docs/raspberry-pi.md, docs/migration-log.md
-- checks run: `git status --short`, `find . -maxdepth 3 -type f | sort`, `grep -RInE '(api[_-]?key|token|secret|password|cookie|bearer|oauth|private_key|client_secret|authkey|tailnet)' docs state SPEC.md AGENTS.md`
-- checks failed: none; secret scan returned policy-text false positives only and no likely credential values
+- files changed: .gitignore
+- checks run: `git status --short`, `git check-ignore -v oauth-client.json .docker/config.json .config/tailscale/state.conf id_ecdsa sample/tailscale/node.state`, `grep -RInE '(api[_-]?key|token|secret|password|cookie|bearer|oauth|private_key|client_secret|authkey|tailnet)' .`
+- checks failed: none; ignore patterns matched expected sample paths and secret scan returned false positives in policy docs, sample git hooks, and code identifiers only
 
 ## Current repo shape
 
@@ -28,6 +28,6 @@ rclone-init.sh
 
 ## Next safe step
 
-Update `.gitignore` for secrets, Docker state, and Tailscale state.
+Move one root script into its target folder with `git mv`.
 
 No file moves yet.

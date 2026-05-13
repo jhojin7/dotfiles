@@ -6,7 +6,7 @@ Create guardrails for `spring-cleanup` before moving files.
 
 ## Next tasks
 
-1. Add `scripts/doctor.sh`.
+- none
 
 ## Blocked
 

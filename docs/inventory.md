@@ -11,6 +11,7 @@ Branch: `spring-cleanup`
 | `zshrc` | config | shell config | move/review | `config/zsh/zshrc`, `stow/zsh/.zshrc` | public-safe review |
 | `profile` | config | shell profile | move/review | `config/profile/profile`, `stow/profile/.profile` | public-safe review |
 | `scripts/link.sh` | script | explicit link manager | moved | `scripts/link.sh` | replaces root `links.sh`; dry-run default with legacy source fallback until config migration |
+| `scripts/doctor.sh` | script | read-only repo and machine health check | added | `scripts/doctor.sh` | reports PASS/WARN/FAIL with non-zero exit only for repo-level FAIL findings |
 | `legacy/setup.sh` | script | old setup | moved | `legacy/setup.sh` then `scripts/bootstrap-*` | moved from repo root; no direct trust |
 | `legacy/dev_config.sh` | script | dev package setup | moved | `legacy/dev_config.sh`, `packages/*` | moved from repo root; package inventory remains in `packages/` |
 | `legacy/startup.sh` | script | old startup | moved | `legacy/startup.sh` | moved from repo root; keep until reviewed |

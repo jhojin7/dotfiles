@@ -4,9 +4,9 @@
 
 - timestamp: 2026-05-13
 - branch: spring-cleanup
-- files changed: added `scripts/link.sh`, removed `links.sh`, updated `docs/inventory.md`, `state/state.md`, `state/plan.md`
-- checks run: `bash -n scripts/*.sh`, `./scripts/link.sh --help`, `./scripts/link.sh --dry-run`, `./scripts/link.sh --status`, `./scripts/link.sh --stow --dry-run`
-- checks failed: none in repo code; explicit mode correctly reported existing home-directory conflicts without overwriting, and stow mode correctly reported missing `stow` command
+- files changed: added `scripts/doctor.sh`; updated executable bits on moved service scripts; updated `docs/inventory.md`, `state/state.md`, `state/plan.md`
+- checks run: `bash -n scripts/*.sh`, `./scripts/doctor.sh --status`
+- checks failed: none; doctor exited cleanly with warnings for expected migration gaps (`config/` sources missing), existing home-directory link conflicts, missing `stow`, and missing `tailscale`
 
 ## Current repo shape
 
@@ -20,6 +20,6 @@ none
 
 ## Next safe step
 
-Add `scripts/doctor.sh` and have it report the current link conflicts as read-only findings.
+none; current `state/plan.md` task list is complete
 
-Eleven structural cleanup tasks have been completed.
+Twelve structural cleanup tasks have been completed.

@@ -26,7 +26,7 @@ Branch: `spring-cleanup`
 | `ai/` | rules/config | AI-specific content only | cleaned | `ai/` | utility script moved out; keep rules/prompts/skills/examples only |
 | `services/hermes-agent/` | service | Hermes service glue | moved | `services/hermes-agent/` | moved from repo root |
 | `tools/incubator/data-telescope/data-telescope.sh` | tool | large CLI | moved | `tools/incubator/data-telescope/` | moved from repo root; likely dedicated repo later |
-| `tools/bin/normalize-llm-punct` | tool | canonical punctuation normalizer | moved | `tools/bin/normalize-llm-punct` | promoted from `ai/normalize-llm-punct.sh`; duplicate root variants still need removal or archive |
+| `tools/bin/normalize-llm-punct` | tool | canonical punctuation normalizer | moved | `tools/bin/normalize-llm-punct` | promoted from `ai/normalize-llm-punct.sh`; root duplicates removed |
 | `macos/services/open-in-vscode.sh` | macOS service | Finder/service helper | moved | `macos/services/open-in-vscode.sh` | moved from repo root |
 | `macos/services/open-terminal-here.sh` | macOS service | Finder/service helper | moved | `macos/services/open-terminal-here.sh` | moved from repo root; still bundles copy-path and permanent-delete actions |
 

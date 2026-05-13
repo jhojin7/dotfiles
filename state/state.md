@@ -2,11 +2,11 @@
 
 ## Last loop
 
-- timestamp: pending
+- timestamp: 2026-05-13
 - branch: spring-cleanup
-- files changed: Phase 0 seed planned
-- checks run: pending
-- checks failed: pending
+- files changed: docs/architecture.md, docs/tools.md, docs/ai.md, docs/macos.md, docs/linux.md, docs/raspberry-pi.md, docs/migration-log.md
+- checks run: `git status --short`, `find . -maxdepth 3 -type f | sort`, `grep -RInE '(api[_-]?key|token|secret|password|cookie|bearer|oauth|private_key|client_secret|authkey|tailnet)' docs state SPEC.md AGENTS.md`
+- checks failed: none; secret scan returned policy-text false positives only and no likely credential values
 
 ## Current repo shape
 
@@ -28,6 +28,6 @@ rclone-init.sh
 
 ## Next safe step
 
-Add Phase 0 docs and package inventory.
+Update `.gitignore` for secrets, Docker state, and Tailscale state.
 
 No file moves yet.

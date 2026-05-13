@@ -1,0 +1,18 @@
+tap "homebrew/bundle"
+
+brew "git"
+brew "gh"
+brew "uv"
+brew "jq"
+brew "ripgrep"
+brew "fd"
+brew "fzf"
+brew "stow"
+brew "neovim"
+brew "tmux"
+
+cask "ghostty"
+cask "visual-studio-code"
+cask "docker"
+cask "tailscale-app"
+cask "raycast"

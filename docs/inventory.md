@@ -13,7 +13,7 @@ Branch: `spring-cleanup`
 | `links.sh` | script | one-line symlink | rewrite | `scripts/link.sh` | idempotent required |
 | `setup.sh` | script | old setup | archive/split | `legacy/setup.sh` then `scripts/bootstrap-*` | no direct trust |
 | `dev_config.sh` | script | dev package setup | archive/split | `legacy/dev_config.sh`, `packages/*` | package inventory |
-| `startup.sh` | script | old startup | archive | `legacy/startup.sh` | keep until reviewed |
+| `legacy/startup.sh` | script | old startup | moved | `legacy/startup.sh` | moved from repo root; keep until reviewed |
 | `rclone-init.sh` | service/script | rclone setup | move/review | `services/rclone/` | never commit `rclone.conf` |
 | `desktop/` | linux | GNOME/desktop | move | `linux/gnome/` | Linux-specific |
 | `gnome/` | linux | GNOME helper | move | `linux/gnome/` | Linux-specific |

@@ -4,8 +4,8 @@
 
 - timestamp: 2026-05-13
 - branch: spring-cleanup
-- files changed: `hermes-agent/run-copyparty-artifacts.sh` -> `services/hermes-agent/run-copyparty-artifacts.sh`, `docs/inventory.md`, `state/state.md`
-- checks run: `git status --short`, `bash -n services/hermes-agent/run-copyparty-artifacts.sh`, `find services -maxdepth 3 -type f | sort`
+- files changed: `startup.sh` -> `legacy/startup.sh`, `docs/inventory.md`, `state/state.md`
+- checks run: `git status --short`, `bash -n legacy/startup.sh`, `find legacy -maxdepth 2 -type f | sort`
 - checks failed: none
 
 ## Current repo shape
@@ -20,12 +20,11 @@ normalize-llm-punct-*.sh
 open-terminal-here.sh
 setup.sh
 dev_config.sh
-startup.sh
 rclone-init.sh
 ```
 
 ## Next safe step
 
-Move another root script into its target folder, starting with a reviewed macOS or service helper.
+Move another root script into its target folder, likely one of the remaining legacy-bound setup scripts.
 
-Two move tasks have been completed.
+Three move tasks have been completed.

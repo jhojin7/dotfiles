@@ -1,82 +1,54 @@
 # dotfiles
 
-## TODO
-- (maybe?) nix conifg?
-- Laptop hibernation
-- Touchpad gestures
-- syncthing setup (host + devices)
-- firewall (ufw)
-- https://vonheikemen.github.io/devlog/tools/build-your-first-lua-config-for-neovim/
-- https://github.com/krapjost/nvim-lua-guide-kr
+Public-safe workstation config, setup notes, agent workflow rules, and small helper tools.
 
+This branch is focused on turning the repo into a clean, agent-runnable dotfiles workspace that can be inspected, dry-run, and gradually migrated without leaking private machine state.
 
-## ahk on windows
-- Win+r, `shell:startup`
-- move ahk files to folder
+## Scope
 
-## - fstab config. mounting home,files,swap partitions
+- shell, editor, terminal, and AI tool config
+- macOS, Linux, Raspberry Pi, and self-hosting notes
+- Docker and Tailscale setup guidance
+- small repo-local helper scripts
+- autonomous cleanup state for repeatable agent loops
+
+## Principles
+
+- public-safe by default
+- dry-run before apply
+- no silent overwrites
+- no private credentials or generated auth state
+- small, auditable changes
+
+## Repo map
+
+- `docs/`: architecture, bootstrap, security, and platform notes
+- `state/`: current loop plan, state, decisions, and notes
+- `scripts/`: repo helper scripts such as `link.sh` and `doctor.sh`
+- `macos/`, `linux/`, `raspberry-pi/`: platform-specific setup and service notes
+- `services/`: self-hosting and service glue
+- `tools/`: personal tools and incubating CLIs
+- `ai/`: AI-specific rules, prompts, and examples
+
+## Start here
+
+- [SPEC.md](/Users/hojinjang/dev/dotfiles/SPEC.md)
+- [AGENTS.md](/Users/hojinjang/dev/dotfiles/AGENTS.md)
+- [docs/architecture.md](/Users/hojinjang/dev/dotfiles/docs/architecture.md)
+- [docs/bootstrap.md](/Users/hojinjang/dev/dotfiles/docs/bootstrap.md)
+- [docs/security.md](/Users/hojinjang/dev/dotfiles/docs/security.md)
+- [state/plan.md](/Users/hojinjang/dev/dotfiles/state/plan.md)
+- [state/state.md](/Users/hojinjang/dev/dotfiles/state/state.md)
+
+## Current helpers
+
+```sh
+./scripts/doctor.sh --status
+./scripts/link.sh --dry-run
 ```
-cat /etc/mtab
-sudo blkid or/and4 sudo lsblk
-sudo nvim /etc/fstab
-```
-- https://www.howtogeek.com/444814/how-to-write-an-fstab-file-on-linux/
 
-## ubuntu apt kakao mirror
-- https://askubuntu.com/a/1376664
-- https://gist.github.com/lesstif/8185f143ba7b8881e767900b1c8e98ad
+`doctor.sh` is read-only. `link.sh` defaults to dry-run and refuses to overwrite regular files or directories.
 
-## switch to workspace with `Super+i` (modified from [this answer](https://askubuntu.com/a/1295037))
-```
-gsettings list-recursively | grep "gnome.*workspace"
-for i in {1..9}; do gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-$i "[]"; done
-for i in {1..9}; do gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"; done
-```
-- other workspace related config...
-```
-gsettings set org.gnome.desktop.wm.preferences num-workspaces 10
-gsettings set org.gnome.mutter dynamic-workspaces false
-```
+## Status
 
-## rlcone
-- rclone + onedrive
-    - Follow install instructions [here](https://www.sussex.ac.uk/its/help/guide.php?id=246)
-    - gitignore .config/rcone/
-    - USE [`rclone {copy | sync}`](https://rclone.org/commands/rclone_copy/)!!! if local synced copies are needed.
-    - else use `mount` command.
-- `rclone copy src:path dest:path --verbose --checksum --metadata --progress --dry-run`
-
-## docker
-- https://get.docker.com/
-- Docker-only install helper script: https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script
-    - Docker Desktop: https://docs.docker.com/desktop/install/ubuntu/
-
-## fonts..
-- Install NerdFonts .zip files.
-- https://www.nerdfonts.com/font-downloads
-- unzip and `sudo cp *.ttf /usr/share/fonts/truetype`
-- update fonts `sudo fc-cache -fv`
-- verify font install `sudo fc-list | grep "JetBrains"`
-- modify kitty config `font_family JetBrainsMono Nerd Font`
-
-## rofi
-- install xbindkeys
-- edit .xbindkeysrc `"rofi -show run" Alt + R`
-- start `xbindkeys -f ~/.xbindkeysrc`
-    TODO: 
-    wifi 
-    bluetooth (connect quickly, 
-        list previous connections? pinned connections?)
-    power control (lock, suspend, logout, shutdown, restart, )
-    volume control 
-
-- https://gitlab.com/vahnrr/rofi-menus
-- https://github.com/ericmurphyxyz/rofi-wifi-menu
-- https://github.com/nickclyde/rofi-bluetooth
-
-## keybindings
-- xbindkeys
-- https://sites.google.com/a/keizie.net/linux/x-window/xbindkeys
-- https://github.com/tmux/tmux/wiki/Modifier-Keys
-
-
+The root cleanup pass is complete on `spring-cleanup`. Remaining warnings are mostly migration-related: canonical `config/` and `stow/` layouts are not fully seeded yet, and local home-directory config files intentionally block unsafe relinking until that migration is ready.

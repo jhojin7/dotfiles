@@ -4,9 +4,9 @@
 
 - timestamp: 2026-05-13
 - branch: spring-cleanup
-- files changed: updated `scripts/doctor.sh`, `AGENTS.md`
-- checks run: `bash -n scripts/*.sh`, `./scripts/doctor.sh --status`
-- checks failed: none; doctor exited cleanly with warnings for expected migration gaps (`config/` sources missing), existing home-directory link conflicts, and unavailable `stow`/`tailscale` in this environment
+- files changed: rewrote `README.md`; updated `docs/inventory.md`, `state/state.md`
+- checks run: `git status --short`, `sed -n '1,240p' README.md`
+- checks failed: none
 
 ## Current repo shape
 
@@ -20,6 +20,6 @@ none
 
 ## Next safe step
 
-rewrite `README.md` into a concise repo landing page
+none; README cleanup is complete and current `state/plan.md` task list is empty
 
 Twelve structural cleanup tasks have been completed.

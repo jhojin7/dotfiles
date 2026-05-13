@@ -7,7 +7,7 @@ Branch: `spring-cleanup`
 
 | Path | Type | Current role | Decision | Target path | Notes |
 |---|---|---|---|---|---|
-| `README.md` | docs | scratch/TODO | rewrite | `README.md` | short landing page |
+| `README.md` | docs | repo landing page | rewritten | `README.md` | concise public-safe overview and entry points |
 | `zshrc` | config | shell config | move/review | `config/zsh/zshrc`, `stow/zsh/.zshrc` | public-safe review |
 | `profile` | config | shell profile | move/review | `config/profile/profile`, `stow/profile/.profile` | public-safe review |
 | `scripts/link.sh` | script | explicit link manager | moved | `scripts/link.sh` | replaces root `links.sh`; dry-run default with legacy source fallback until config migration |

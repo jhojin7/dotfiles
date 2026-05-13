@@ -11,7 +11,7 @@ Branch: `spring-cleanup`
 | `zshrc` | config | shell config | move/review | `config/zsh/zshrc`, `stow/zsh/.zshrc` | public-safe review |
 | `profile` | config | shell profile | move/review | `config/profile/profile`, `stow/profile/.profile` | public-safe review |
 | `links.sh` | script | one-line symlink | rewrite | `scripts/link.sh` | idempotent required |
-| `setup.sh` | script | old setup | archive/split | `legacy/setup.sh` then `scripts/bootstrap-*` | no direct trust |
+| `legacy/setup.sh` | script | old setup | moved | `legacy/setup.sh` then `scripts/bootstrap-*` | moved from repo root; no direct trust |
 | `dev_config.sh` | script | dev package setup | archive/split | `legacy/dev_config.sh`, `packages/*` | package inventory |
 | `legacy/startup.sh` | script | old startup | moved | `legacy/startup.sh` | moved from repo root; keep until reviewed |
 | `rclone-init.sh` | service/script | rclone setup | move/review | `services/rclone/` | never commit `rclone.conf` |

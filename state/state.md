@@ -4,8 +4,8 @@
 
 - timestamp: 2026-05-13
 - branch: spring-cleanup
-- files changed: `startup.sh` -> `legacy/startup.sh`, `docs/inventory.md`, `state/state.md`
-- checks run: `git status --short`, `bash -n legacy/startup.sh`, `find legacy -maxdepth 2 -type f | sort`
+- files changed: `setup.sh` -> `legacy/setup.sh`, `docs/inventory.md`, `state/state.md`
+- checks run: `git status --short`, `bash -n legacy/setup.sh`, `find legacy -maxdepth 2 -type f | sort`
 - checks failed: none
 
 ## Current repo shape
@@ -18,7 +18,6 @@ Known root cleanup targets:
 data-telescope.sh
 normalize-llm-punct-*.sh
 open-terminal-here.sh
-setup.sh
 dev_config.sh
 rclone-init.sh
 ```
@@ -27,4 +26,4 @@ rclone-init.sh
 
 Move another root script into its target folder, likely one of the remaining legacy-bound setup scripts.
 
-Three move tasks have been completed.
+Four move tasks have been completed.

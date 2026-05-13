@@ -4,8 +4,8 @@
 
 - timestamp: 2026-05-13
 - branch: spring-cleanup
-- files changed: `rclone-init.sh` -> `services/rclone/rclone-init.sh`, `docs/inventory.md`, `state/state.md`
-- checks run: `git status --short`, `bash -n services/rclone/rclone-init.sh`, `find services -maxdepth 3 -type f | sort`
+- files changed: `ai/normalize-llm-punct.sh` -> `tools/bin/normalize-llm-punct`, `docs/inventory.md`, `state/state.md`
+- checks run: `git status --short`, `bash -n tools/bin/normalize-llm-punct`, `find ai tools -maxdepth 3 -type f | sort`
 - checks failed: none
 
 ## Current repo shape
@@ -20,6 +20,6 @@ normalize-llm-punct-*.sh
 
 ## Next safe step
 
-Reassess the remaining root scripts. Only the punctuation-normalizer duplicates remain in root, so the next bounded task is comparison and canonicalization rather than another mechanical move.
+Review and remove or archive the duplicate root punctuation scripts now that the canonical version lives at `tools/bin/normalize-llm-punct`.
 
-Eight move tasks have been completed.
+Nine structural cleanup tasks have been completed.

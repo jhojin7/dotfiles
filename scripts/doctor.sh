@@ -97,6 +97,14 @@ check_required_commands() {
       fail "command missing: $cmd"
     fi
   done
+
+  if [[ "$(uname -s)" == "Darwin" ]]; then
+    if command -v brew >/dev/null 2>&1; then
+      pass "command available: brew"
+    else
+      fail "command missing: brew"
+    fi
+  fi
 }
 
 check_shell_syntax() {
@@ -238,6 +246,53 @@ check_expected_config_sources() {
   done
 }
 
+check_macos_bash_runtime() {
+  if [[ "$(uname -s)" != "Darwin" ]]; then
+    pass "macOS bash runtime checks skipped on $(uname -s)"
+    return
+  fi
+
+  if grep -Fxq 'brew "bash"' "$REPO_ROOT/packages/Brewfile"; then
+    pass 'packages/Brewfile includes brew "bash"'
+  else
+    fail 'packages/Brewfile is missing brew "bash"'
+  fi
+
+  if ! command -v brew >/dev/null 2>&1; then
+    fail "brew command missing; cannot verify Homebrew bash runtime"
+    return
+  fi
+
+  local prefix bash_path current_shell
+  prefix="$(brew --prefix bash 2>/dev/null || true)"
+  if [[ -z "$prefix" ]]; then
+    warn "Homebrew bash formula is not installed yet"
+    return
+  fi
+
+  bash_path="$prefix/bin/bash"
+  if [[ -x "$bash_path" ]]; then
+    pass "Homebrew bash installed at $bash_path"
+  else
+    fail "expected Homebrew bash binary missing at $bash_path"
+  fi
+
+  if grep -Fxq "$bash_path" /etc/shells 2>/dev/null; then
+    pass "/etc/shells contains $bash_path"
+  else
+    warn "$bash_path is missing from /etc/shells"
+  fi
+
+  current_shell="${SHELL:-}"
+  if [[ -z "$current_shell" ]]; then
+    warn "SHELL environment variable is unset"
+  elif [[ "$current_shell" == "$bash_path" ]]; then
+    pass "current shell points to Homebrew bash"
+  else
+    warn "current shell is $current_shell; expected $bash_path"
+  fi
+}
+
 check_link_status() {
   if [[ ! -x "$REPO_ROOT/scripts/link.sh" ]]; then
     fail "scripts/link.sh is missing or not executable"
@@ -317,6 +372,7 @@ check_required_commands
 check_shell_syntax
 check_secret_scan
 check_broken_symlinks
+check_macos_bash_runtime
 check_stow_simulation
 check_docker
 check_tailscale

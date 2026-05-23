@@ -26,6 +26,20 @@ brew bundle check --file packages/Brewfile
 brew bundle install --file packages/Brewfile
 ```
 
+On macOS, `packages/Brewfile` now includes Homebrew `bash`.
+After install, keep the login shell aligned manually if desired:
+
+```sh
+brew --prefix bash
+chsh -s "$(brew --prefix)/bin/bash"
+```
+
+If `$(brew --prefix)/bin/bash` is not already listed in `/etc/shells`, add it manually before using `chsh`.
+
+System update settings are documented separately in `docs/macos.md`:
+
+`System Settings > General > Software Update > Automatic Updates (i)`
+
 Default script must only print this unless `--apply`.
 
 ## Docker

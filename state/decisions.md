@@ -64,3 +64,14 @@ No private/redacted case-study docs in this repo.
 
 Reason:
 Out of scope for dotfiles.
+
+## DEC-008: Use Homebrew bash on macOS
+
+Decision:
+Install `bash` via Homebrew and use that binary as the macOS login shell.
+
+Reason:
+Apple’s `/bin/bash` is the older system shell; Homebrew bash is the supported current version.
+
+Consequence:
+`packages/Brewfile` should include `bash`, and macOS docs should explain how to add the Homebrew path to `/etc/shells` and switch the login shell with `chsh`.

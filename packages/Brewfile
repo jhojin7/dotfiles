@@ -1,6 +1,7 @@
 tap "homebrew/bundle"
 
 brew "git"
+brew "bash"
 brew "gh"
 brew "uv"
 brew "jq"

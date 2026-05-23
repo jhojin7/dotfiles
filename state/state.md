@@ -2,10 +2,10 @@
 
 ## Last loop
 
-- timestamp: 2026-05-13
+- timestamp: 2026-05-23
 - branch: spring-cleanup
-- files changed: rewrote `README.md`; updated `docs/inventory.md`, `state/state.md`
-- checks run: `git status --short`, `sed -n '1,240p' README.md`
+- files changed: updated `packages/Brewfile`, `docs/macos.md`, `state/decisions.md`, `state/state.md`
+- checks run: `git status --short`, read-back verification of changed files
 - checks failed: none
 
 ## Current repo shape
@@ -20,6 +20,6 @@ none
 
 ## Next safe step
 
-none; README cleanup is complete and current `state/plan.md` task list is empty
+none; this loop only updated macOS setup notes and package policy
 
 Twelve structural cleanup tasks have been completed.

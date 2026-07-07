@@ -16,15 +16,15 @@ sudo snap install --classic intellij-idea-community
 
 
 
-# gnome-tweaks: 
-#swap esc caps lock
-#set altR as korean
+# gnome-tweaks:
+# swap esc caps lock
+# set altR as korean
 # set up docker
 
 # gnome settings
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 10
 gsettings set org.gnome.mutter dynamic-workspaces false
-for i in {1..9}; 
+for i in {1..9};
     do gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-$i "[]";
 done
 for i in {1..9};

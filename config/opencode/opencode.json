@@ -8,6 +8,16 @@
         "@playwright/mcp@latest"
       ],
       "enabled": true
+    },
+    "notion": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "mcp-remote",
+        "https://mcp.notion.com/mcp"
+      ],
+      "enabled": false
     }
   },
   "tui": {
@@ -26,8 +36,8 @@
     "messages_last": "alt+shift+g,end"
   },
   "plugin": [
-    "oh-my-opencode",
-    "opencode-antigravity-auth@1.2.6",
+    "oh-my-openagent",
+    "opencode-antigravity-auth@1.6.0",
     "opencode-openai-codex-auth"
   ],
   "provider": {

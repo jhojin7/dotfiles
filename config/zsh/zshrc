@@ -1,0 +1,36 @@
+# If you come from bash you might have to change your PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+export ZSH="$HOME/.oh-my-zsh"
+export LC_ALL=ko_KR.UTF-8
+export LANG=ko_KR.UTF-8
+
+ZSH_THEME="robbyrussell"
+plugins=(git vi-mode)
+
+source "$ZSH/oh-my-zsh.sh"
+
+# Preferred editor for local and remote sessions.
+if [[ -n "$SSH_CONNECTION" ]]; then
+  export EDITOR='vi'
+else
+  export EDITOR='nvim'
+fi
+
+alias jqtable='jq -r "([.[] | select(type == \"object\")] | .[0] | keys_unsorted) as \$keys | \$keys, (.[] | select(type == \"object\") | [.[ \$keys[] ]]) | @tsv" | column -t -s $"\t"'
+
+eval "$(starship init zsh)"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# grok CLI
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=("$HOME/.grok/completions/zsh" $fpath)
+autoload -Uz compinit && compinit -C
+
+# LM Studio CLI
+export PATH="$PATH:$HOME/.lmstudio/bin"

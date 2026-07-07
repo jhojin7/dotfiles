@@ -17,6 +17,8 @@ CONFIG_PATHS=(
   "config/tmux/tmux.conf"
   "config/ghostty/config"
   "config/kitty/kitty.conf"
+  "config/opencode/opencode.json"
+  "config/vscode/settings.json"
 )
 
 usage() {
@@ -118,7 +120,7 @@ check_shell_syntax() {
     else
       fail "shell syntax: ${file#$REPO_ROOT/}"
     fi
-  done < <(find "$REPO_ROOT/scripts" "$REPO_ROOT/macos" "$REPO_ROOT/services" -type f -name '*.sh' -print0 2>/dev/null)
+  done < <(find "$REPO_ROOT/scripts" "$REPO_ROOT/macos" "$REPO_ROOT/services" "$REPO_ROOT/linux" -type f -name '*.sh' -print0 2>/dev/null)
 
   if [[ "$checked" -eq 0 ]]; then
     warn "no shell scripts found under scripts/, macos/, or services/"
@@ -148,7 +150,7 @@ check_secret_scan() {
   while IFS= read -r line; do
     [[ -n "$line" ]] || continue
     case "$line" in
-      *"/.gitignore:"*|*"/nixos/configuration.nix:"*|*"/tools/incubator/data-telescope/data-telescope.sh:"*|*"/scripts/doctor.sh:"*)
+      *"/.gitignore:"*|*"/linux/nixos/configuration.nix:"*|*"/tools/incubator/data-telescope/data-telescope.sh:"*|*"/scripts/doctor.sh:"*)
         warn "secret-scan false positive: ${line#$REPO_ROOT/}"
         ;;
       *)

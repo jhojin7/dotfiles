@@ -231,6 +231,7 @@ Use this target shape:
 │   ├── apt.txt
 │   ├── npm-global.txt
 │   ├── uv-tools.txt
+│   ├── vscode-extensions.txt
 │   └── mas.txt
 ├── stow/
 │   ├── zsh/.zshrc
@@ -251,6 +252,7 @@ Use this target shape:
 │   ├── claude-code/
 │   ├── codex/
 │   ├── cursor/
+│   ├── vscode/
 │   ├── hermes/
 │   ├── raycast/
 │   └── docker/

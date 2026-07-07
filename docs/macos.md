@@ -16,6 +16,7 @@ Priority order:
 
 - terminal and shell config
 - editor config
+- VS Code settings and extension inventory
 - Finder and desktop helpers
 - Docker Desktop notes
 - Tailscale install and status checks

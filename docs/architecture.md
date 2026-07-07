@@ -31,3 +31,4 @@ Describe the stable shape of this repo after `spring-cleanup`.
 - align root files with target folders from `docs/inventory.md`
 - add a bootstrap and doctor path that matches `AGENTS.md`
 - convert managed configs into `config/` plus `stow/` layout
+- keep VS Code settings and extension inventory under review before enabling automatic linking

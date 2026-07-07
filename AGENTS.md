@@ -84,6 +84,7 @@ git status --short
 bash -n scripts/*.sh
 bash -n macos/**/*.sh
 bash -n services/**/*.sh
+bash -n linux/**/*.sh
 docker --version
 docker compose version
 tailscale version

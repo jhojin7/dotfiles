@@ -24,6 +24,9 @@ This branch is focused on turning the repo into a clean, agent-runnable dotfiles
 
 - `docs/`: architecture, bootstrap, security, and platform notes
 - `state/`: current loop plan, state, decisions, and notes
+- `config/`: canonical public-safe config sources
+- `stow/`: GNU Stow packages for managed dotfiles
+- `packages/`: Homebrew, npm, uv, mas, and VS Code extension inventories
 - `scripts/`: repo helper scripts such as `link.sh` and `doctor.sh`
 - `macos/`, `linux/`, `raspberry-pi/`: platform-specific setup and service notes
 - `services/`: self-hosting and service glue

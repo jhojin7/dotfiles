@@ -23,3 +23,4 @@ Track public-safe AI agent configuration and workflow notes for this repo.
 - keep `ai/` limited to rules, prompts, skills, schemas, and examples
 - move non-AI utility scripts out of `ai/`
 - review AI tool config before moving it under `config/` or `stow/`
+- keep provider auth, generated sessions, and remote MCP credentials out of tracked config

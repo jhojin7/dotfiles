@@ -24,6 +24,8 @@ Required modes:
 ```sh
 brew bundle check --file packages/Brewfile
 brew bundle install --file packages/Brewfile
+npm install -g $(grep -vE '^\s*(#|$)' packages/npm-global.txt)
+grep -vE '^\s*(#|$)' packages/uv-tools.txt | xargs -n1 uv tool install
 ```
 
 On macOS, `packages/Brewfile` now includes Homebrew `bash`.
@@ -41,6 +43,13 @@ System update settings are documented separately in `docs/macos.md`:
 `System Settings > General > Software Update > Automatic Updates (i)`
 
 Default script must only print this unless `--apply`.
+
+VS Code extensions are tracked in `packages/vscode-extensions.txt`.
+Install them manually or through a future guarded bootstrap helper:
+
+```sh
+grep -vE '^\s*(#|$)' packages/vscode-extensions.txt | xargs -n1 code --install-extension
+```
 
 ## Docker
 

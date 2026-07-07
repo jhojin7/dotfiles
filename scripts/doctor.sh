@@ -16,7 +16,6 @@ CONFIG_PATHS=(
   "config/nvim"
   "config/tmux/tmux.conf"
   "config/ghostty/config"
-  "config/kitty/kitty.conf"
   "config/opencode/opencode.json"
   "config/vscode/settings.json"
 )
@@ -192,7 +191,7 @@ check_stow_simulation() {
     return
   fi
 
-  if stow --simulate --target="$HOME" --dir="$REPO_ROOT/stow" zsh profile nvim tmux ghostty kitty opencode >/dev/null 2>&1; then
+  if stow --simulate --target="$HOME" --dir="$REPO_ROOT/stow" zsh profile nvim tmux ghostty opencode >/dev/null 2>&1; then
     pass "stow simulation completed"
   else
     warn "stow simulation reported issues"

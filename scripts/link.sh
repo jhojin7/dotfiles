@@ -13,11 +13,10 @@ MAP_ENTRIES=(
   "nvim|config/nvim|nvim/nvim|$HOME/.config/nvim"
   "tmux|config/tmux/tmux.conf|tmux/tmux.conf|$HOME/.config/tmux/tmux.conf"
   "ghostty|config/ghostty/config|ghostty/config|$HOME/.config/ghostty/config"
-  "kitty|config/kitty/kitty.conf|kitty/kitty.conf|$HOME/.config/kitty/kitty.conf"
   "opencode|config/opencode/opencode.json|opencode/opencode.json|$HOME/.config/opencode/opencode.json"
 )
 
-STOW_PACKAGES=(zsh profile nvim tmux ghostty kitty opencode)
+STOW_PACKAGES=(zsh profile nvim tmux ghostty opencode)
 
 usage() {
   cat <<'EOF'

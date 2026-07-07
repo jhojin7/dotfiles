@@ -19,8 +19,8 @@ Branch: `spring-cleanup`
 | `linux/gnome/` | linux | GNOME/desktop | moved | `linux/gnome/` | Linux-specific snippets still need dry-run/apply guards |
 | `linux/nixos/` | linux | NixOS config | moved | `linux/nixos/` | no Home Manager dotfiles |
 | `config/ghostty/` | config | terminal config | moved/reviewed | `config/ghostty/`, `stow/ghostty/` | macOS terminal |
-| `config/kitty/` | config | terminal config | moved/reviewed | `config/kitty/`, `stow/kitty/` | terminal config |
-| `config/nvim/` | config | editor config | moved/reviewed | `config/nvim/`, `stow/nvim/` | current local config; older lazy.nvim draft moved to `legacy/` |
+| `legacy/kitty.conf` | config | terminal config | legacy | `legacy/kitty.conf` | kitty is not an active managed config |
+| `config/nvim/` | config | editor config | moved/reviewed | `config/nvim/`, `stow/nvim/` | current local config |
 | `config/tmux/` | config | tmux config | moved/reviewed | `config/tmux/`, `stow/tmux/` | current local config |
 | `config/opencode/` | config | AI tool config | moved/reviewed | `config/opencode/`, `stow/opencode/` | remote Notion MCP kept disabled by default |
 | `config/vscode/` | config | VS Code user settings | added/reviewed | `config/vscode/` | tracked as inventory; not linked automatically yet |

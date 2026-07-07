@@ -11,6 +11,7 @@
 ## Current repo shape
 
 Managed dotfiles now live under `config/` with GNU Stow packages planned under `stow/`.
+Kitty is legacy-only and is not part of active managed config.
 Linux desktop and NixOS files live under `linux/`.
 macOS bootstrap has a guarded `scripts/bootstrap-macos.sh` path.
 

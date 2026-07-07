@@ -3,7 +3,7 @@ sudo apt upgrade
 
 sudo apt install -y gnome-tweaks i3lock zoom
 sudo apt install -y vlc htop
-sudo apt install -y neofetch gparted kitty
+sudo apt install -y neofetch gparted
 
 # install obs
 sudo add-apt-repository ppa:obsproject/obs-studio

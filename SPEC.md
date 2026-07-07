@@ -239,7 +239,6 @@ Use this target shape:
 │   ├── nvim/.config/nvim/
 │   ├── tmux/.config/tmux/tmux.conf
 │   ├── ghostty/.config/ghostty/config
-│   ├── kitty/.config/kitty/kitty.conf
 │   └── opencode/.config/opencode/opencode.json
 ├── config/
 │   ├── zsh/
@@ -247,7 +246,6 @@ Use this target shape:
 │   ├── nvim/
 │   ├── tmux/
 │   ├── ghostty/
-│   ├── kitty/
 │   ├── opencode/
 │   ├── claude-code/
 │   ├── codex/
@@ -304,6 +302,7 @@ Use this target shape:
     ├── setup.sh
     ├── dev_config.sh
     ├── startup.sh
+    ├── kitty.conf
     └── raw-notes.md
 ```
 
@@ -356,7 +355,7 @@ Guardrails first. Moves second.
 | `gnome/` | `linux/gnome/` | GNOME-specific |
 | `nixos/` | `linux/nixos/` | keep, but not dotfile manager |
 | `ghostty/` | `stow/ghostty/.config/ghostty/` and/or `config/ghostty/` | terminal config |
-| `kitty/` | `stow/kitty/.config/kitty/` and/or `config/kitty/` | terminal config |
+| `kitty/` | `legacy/kitty.conf` | legacy terminal config |
 | `nvim/` | `stow/nvim/.config/nvim/` and/or `config/nvim/` | editor config |
 | `tmux/` | `stow/tmux/.config/tmux/` and/or `config/tmux/` | terminal multiplexer |
 | `opencode/` | `stow/opencode/.config/opencode/` and/or `config/opencode/` | AI tool config after review |
@@ -499,7 +498,6 @@ config/profile/profile        -> ~/.profile
 config/nvim                   -> ~/.config/nvim
 config/tmux/tmux.conf         -> ~/.config/tmux/tmux.conf
 config/ghostty/config         -> ~/.config/ghostty/config
-config/kitty/kitty.conf       -> ~/.config/kitty/kitty.conf
 config/opencode/opencode.json -> ~/.config/opencode/opencode.json
 ```
 
@@ -561,7 +559,7 @@ docker compose version
 tailscale version
 tailscale status
 grep -RInE '(api[_-]?key|token|secret|password|cookie|bearer|oauth|private_key|client_secret|authkey|tailnet)' .
-stow --simulate --target="$HOME" --dir=stow zsh profile nvim tmux ghostty kitty opencode
+stow --simulate --target="$HOME" --dir=stow zsh profile nvim tmux ghostty opencode
 ```
 
 `taiIscale status` may warn if not logged in. That is not necessarily failure.
@@ -1022,7 +1020,7 @@ tailscale version
 ./scripts/link.sh --dry-run > /tmp/link.1
 ./scripts/link.sh --dry-run > /tmp/link.2
 diff -u /tmp/link.1 /tmp/link.2
-stow --simulate --target="$HOME" --dir=stow zsh profile nvim tmux ghostty kitty opencode
+stow --simulate --target="$HOME" --dir=stow zsh profile nvim tmux ghostty opencode
 grep -RInE '(api[_-]?key|token|secret|password|cookie|bearer|oauth|private_key|client_secret|authkey|tailnet|registry token)' .
 ```
 

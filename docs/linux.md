@@ -20,3 +20,4 @@ Track Linux-specific setup notes without forcing Linux assumptions onto the rest
 
 - split Ubuntu, GNOME, and NixOS notes more clearly as inventory review continues
 - turn GNOME setup snippets into dry-run/apply helpers before using them on a fresh machine
+- keep kitty as legacy; do not include it in new active setup paths

@@ -1,0 +1,73 @@
+{
+  "workbench.colorTheme": "Default High Contrast",
+  "workbench.startupEditor": "none",
+  "workbench.sideBar.location": "right",
+  "workbench.activityBar.location": "default",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": false,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.empty.hint": "hidden",
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'JetBrains Mono', 'D2Coding', 'Apple SD Gothic Neo', 'Hiragino Sans', 'PingFang SC', 'PingFang TC', Menlo, Monaco, 'Courier New', monospace",
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', 'JetBrains Mono', 'D2Coding', 'Apple SD Gothic Neo', 'Hiragino Sans', 'PingFang SC', 'PingFang TC', Menlo, Monaco, 'Courier New', monospace",
+  "editor.rulers": [
+    80
+  ],
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "boundary",
+  "files.insertFinalNewline": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "git.autofetch": true,
+  "git.openRepositoryInParentFolders": "never",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "keyboard.dispatch": "keyCode",
+  "testing.gutterEnabled": false,
+  "testing.automaticallyOpenPeekView": "never",
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": false,
+  "python.testing.autoTestDiscoverOnSaveEnabled": false,
+  "chat.disableAIFeatures": true,
+  "chat.agent.enabled": false,
+  "chat.customAgentInSubagent.enabled": false,
+  "chat.checkpoints.enabled": false,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "github.copilot.nextEditSuggestions.fixes": false,
+  "github.copilot.chat.useProjectTemplates": false,
+  "editor.inlineSuggest.edits.allowCodeShifting": "never",
+  "editor.inlineSuggest.edits.renderSideBySide": "never",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "terminal.integrated.initialHint": false,
+  "terminal.integrated.suggest.enabled": false,
+  "workbench.editor.useModal": "off",
+  "workbench.settings.editor": "json",
+  "workbench.welcomePage.walkthroughs.openOnInstall": false
+}

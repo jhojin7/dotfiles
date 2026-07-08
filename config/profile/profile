@@ -1,0 +1,22 @@
+# umask 022
+
+# If running bash, include .bashrc when it exists.
+if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
+fi
+
+if [ -d "$HOME/bin" ]; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+export PATH
+
+# Linux desktop keyboard preference. Keep this guarded so the same profile can
+# be linked on macOS, servers, and containers without noisy startup failures.
+if [ "$(uname -s)" = "Linux" ] && command -v setxkbmap >/dev/null 2>&1; then
+    setxkbmap -option caps:escape
+fi

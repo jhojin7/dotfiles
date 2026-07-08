@@ -1,2 +1,76 @@
-.gitignore.d
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
 
+# local temp/state
+.cache/
+tmp/
+*.log
+*.sqlite
+*.db
+
+# env/secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.mobileconfig
+id_rsa
+id_ed25519
+id_ecdsa
+id_dsa
+id_xmss
+*.kdbx
+*.age
+*.gpg
+oauth*.json
+oauth*.yaml
+oauth*.yml
+*.oauth
+
+# auth/session/provider state
+.aws/
+.gcloud/
+.config/gcloud/
+.config/rclone/rclone.conf
+.config/gh/hosts.yml
+.config/opencode/auth*
+.config/claude/
+.config/codex/
+.hermes/
+.npmrc
+.pypirc
+
+# Docker auth/state
+.docker/
+.docker/config.json
+docker/config.json
+**/docker/config.json
+**/.docker/
+**/docker-desktop-data/
+**/volumes/
+**/data/
+**/.env
+
+# Tailscale auth/state
+.tailscale/
+.config/tailscale/
+tailscaled.state
+tailscale.state
+**/tailscaled.state
+**/tailscale.state
+**/tailscale/*.state
+**/*authkey*
+**/*tailnet*
+
+# browser/session data
+Library/Application Support/Google/Chrome/
+Library/Application Support/Arc/
+Library/Application Support/Firefox/
+cookies*
+*cookie*
+*session*
+*token*

@@ -1,0 +1,13 @@
+# One package per line.
+@google/gemini-cli
+@googleworkspace/cli
+@kaitranntt/ccs
+@openai/codex
+@react-native-community/cli
+@vue/cli
+http-server
+openclaw
+task-master-ai
+typescript
+typescript-language-server
+wrangler

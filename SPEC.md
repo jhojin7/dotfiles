@@ -1,9 +1,9 @@
-# Dotfiles Spring Cleanup SPEC
+# Dotfiles Cleanup SPEC
 
-Status: Draft v4
-Branch: `spring-cleanup`
+Status: Active v4
+Default branch: `main`
 Repo: `jhojin7/dotfiles`
-Mode: agent-runnable spring-cleaning branch
+Mode: agent-runnable dotfiles workspace
 
 ## 0. Current correction
 
@@ -19,7 +19,7 @@ Important corrections:
 
 ## 1. Goal
 
-Turn this branch into a clean, public-safe, agent-runnable dotfiles repository for workstation setup, shell/editor/terminal config, macOS/Linux/Raspberry Pi setup notes, AI-agent config, Docker/self-hosting workflows, Tailscale access notes, and small personal tools.
+Turn this repo into a clean, public-safe, agent-runnable dotfiles repository for workstation setup, shell/editor/terminal config, macOS/Linux/Raspberry Pi setup notes, AI-agent config, Docker/self-hosting workflows, Tailscale access notes, and small personal tools.
 
 Primary outcome:
 
@@ -857,7 +857,7 @@ Policy:
 
 ## 15. Agent loop protocol
 
-This branch should be runnable by agent loops without constant user prompting.
+This repo should be runnable by agent loops without constant user prompting.
 
 Create seeded files:
 
@@ -1077,7 +1077,7 @@ Agent must stop and report instead of continuing if:
 
 - secret scan finds likely credential
 - script would overwrite a regular file
-- branch is not `spring-cleanup`
+- branch is neither `main` nor the expected task branch
 - command requires auth
 - command would mutate outside repo without explicit `--apply`
 - file move would delete history or duplicate canonical source

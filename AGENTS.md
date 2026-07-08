@@ -97,7 +97,7 @@ grep -RInE '(api[_-]?key|token|secret|password|cookie|bearer|oauth|private_key|c
 Stop and report if:
 
 - secret scan finds likely credential
-- branch is not `spring-cleanup`
+- branch is neither `main` nor the expected task branch
 - command needs login/auth
 - action would overwrite a normal file
 - diff becomes too broad

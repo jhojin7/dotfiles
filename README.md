@@ -2,7 +2,7 @@
 
 Public-safe workstation config, setup notes, agent workflow rules, and small helper tools.
 
-This branch is focused on turning the repo into a clean, agent-runnable dotfiles workspace that can be inspected, dry-run, and gradually migrated without leaking private machine state.
+This repo is focused on being a clean, agent-runnable dotfiles workspace that can be inspected, dry-run, and gradually migrated without leaking private machine state.
 
 ## Scope
 
@@ -35,13 +35,13 @@ This branch is focused on turning the repo into a clean, agent-runnable dotfiles
 
 ## Start here
 
-- [SPEC.md](/Users/hojinjang/dev/dotfiles/SPEC.md)
-- [AGENTS.md](/Users/hojinjang/dev/dotfiles/AGENTS.md)
-- [docs/architecture.md](/Users/hojinjang/dev/dotfiles/docs/architecture.md)
-- [docs/bootstrap.md](/Users/hojinjang/dev/dotfiles/docs/bootstrap.md)
-- [docs/security.md](/Users/hojinjang/dev/dotfiles/docs/security.md)
-- [state/plan.md](/Users/hojinjang/dev/dotfiles/state/plan.md)
-- [state/state.md](/Users/hojinjang/dev/dotfiles/state/state.md)
+- [SPEC.md](SPEC.md)
+- [AGENTS.md](AGENTS.md)
+- [docs/architecture.md](docs/architecture.md)
+- [docs/bootstrap.md](docs/bootstrap.md)
+- [docs/security.md](docs/security.md)
+- [state/plan.md](state/plan.md)
+- [state/state.md](state/state.md)
 
 ## Current helpers
 
@@ -54,4 +54,4 @@ This branch is focused on turning the repo into a clean, agent-runnable dotfiles
 
 ## Status
 
-The root cleanup pass is complete on `spring-cleanup`. Remaining warnings are mostly migration-related: canonical `config/` and `stow/` layouts are not fully seeded yet, and local home-directory config files intentionally block unsafe relinking until that migration is ready.
+The root cleanup structure is in place. Remaining warnings are mostly migration-related: canonical `config/` and `stow/` layouts are not fully seeded yet, and local home-directory config files intentionally block unsafe relinking until that migration is ready.

@@ -73,11 +73,14 @@ check_branch() {
     return
   fi
 
-  if [[ "$branch" == "spring-cleanup" ]]; then
-    pass "branch is spring-cleanup"
-  else
-    fail "branch is $branch (expected spring-cleanup)"
-  fi
+  case "$branch" in
+    main|spring-cleanup)
+      pass "branch is $branch"
+      ;;
+    *)
+      fail "branch is $branch (expected main or spring-cleanup)"
+      ;;
+  esac
 }
 
 check_os_and_shell() {

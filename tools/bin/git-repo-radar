@@ -6,38 +6,74 @@ set -u
 
 usage() {
   cat <<'USAGE'
-Usage: git-repo-radar [ROOT ...]
+Usage: git-repo-radar [--dry-run] [--run|--execute|--apply] [ROOT ...]
 
 Scan local git repositories under ROOTs and show only repos that need attention.
 If no ROOT is provided, existing default roots are used:
   ~/dev ~/src ~/repos ~/git ~/Projects ~/Documents/GitHub ~/workspace
 
-What it does:
+Modes:
+  --dry-run        Fetch + report only. This is the default.
+  --run           Also pull clean behind-only repos with git pull --ff-only.
+  --execute       Alias for --run.
+  --apply         Alias for --run, for scripts that require an explicit apply gate.
+
+What dry-run does:
   - finds .git directories and .git files (worktrees/submodules)
   - skips heavy directories such as node_modules, .venv, build, dist, Library, target, Pods
   - runs: git fetch --all --prune --quiet with terminal prompts disabled
   - runs: git status -sb
   - reports behind/ahead/dirty/untracked/fetch-fail summaries
 
+What --run/--execute/--apply additionally does:
+  - runs: git pull --ff-only --quiet only for repos that are behind, not ahead,
+    and have no dirty or untracked working-tree entries
+  - skips pulling repos with local changes, untracked files, ahead/diverged state,
+    fetch failures, or status failures
+
 What it never does:
-  - no git pull
+  - no non-fast-forward pull
   - no merge/rebase
   - no stash pop
-  - no working-tree changes
+  - no pull in dirty or untracked working trees
 USAGE
 }
 
-if [ "${1:-}" = "--help" ] || [ "${1:-}" = "-h" ]; then
-  usage
-  exit 0
-fi
-
+mode="dry-run"
 roots=()
-if [ "$#" -gt 0 ]; then
-  for root in "$@"; do
-    roots+=("$root")
-  done
-else
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --help|-h)
+      usage
+      exit 0
+      ;;
+    --dry-run|--status)
+      mode="dry-run"
+      ;;
+    --run|--execute|--apply)
+      mode="run"
+      ;;
+    --)
+      shift
+      while [ "$#" -gt 0 ]; do
+        roots+=("$1")
+        shift
+      done
+      break
+      ;;
+    --*)
+      echo "git-repo-radar: unknown option: $1" >&2
+      echo "Use: git-repo-radar --help" >&2
+      exit 2
+      ;;
+    *)
+      roots+=("$1")
+      ;;
+  esac
+  shift
+done
+
+if [ "${#roots[@]}" -eq 0 ]; then
   for root in \
     "$HOME/dev" \
     "$HOME/src" \
@@ -95,6 +131,7 @@ done < "$candidates_file"
 
 scanned=0
 attention=0
+pulled=0
 
 while IFS= read -r repo; do
   [ -n "$repo" ] || continue
@@ -117,12 +154,13 @@ while IFS= read -r repo; do
   first_line=$(printf '%s\n' "$status_output" | sed -n '1p')
   rest_lines=$(printf '%s\n' "$status_output" | sed '1d')
 
-  reasons=""
+  behind=0
+  ahead=0
   case "$first_line" in
-    *behind*) reasons="$reasons behind" ;;
+    *behind*) behind=1 ;;
   esac
   case "$first_line" in
-    *ahead*) reasons="$reasons ahead" ;;
+    *ahead*) ahead=1 ;;
   esac
 
   dirty=0
@@ -135,6 +173,31 @@ while IFS= read -r repo; do
       dirty=1
     fi
   fi
+
+  if [ "$mode" = "run" ] && [ "$fetch_failed" -eq 0 ] && [ "$behind" -eq 1 ] && [ "$ahead" -eq 0 ] && [ "$dirty" -eq 0 ] && [ "$untracked" -eq 0 ]; then
+    pull_output=$(GIT_TERMINAL_PROMPT=0 GIT_ASKPASS= git -C "$repo" pull --ff-only --quiet 2>&1)
+    pull_rc=$?
+    if [ "$pull_rc" -eq 0 ]; then
+      pulled=$((pulled + 1))
+      status_output=$(git -C "$repo" status -sb 2>&1)
+      first_line=$(printf '%s\n' "$status_output" | sed -n '1p')
+      printf '%s\n' "$repo"
+      printf '  action: pulled --ff-only\n'
+      printf '  status: %s\n' "$first_line"
+      continue
+    fi
+
+    attention=$((attention + 1))
+    printf '%s\n' "$repo"
+    printf '  status: %s\n' "$first_line"
+    printf '  attention: pull-fail\n'
+    printf '  pull: failed (%s)\n' "$pull_output"
+    continue
+  fi
+
+  reasons=""
+  [ "$behind" -eq 1 ] && reasons="$reasons behind"
+  [ "$ahead" -eq 1 ] && reasons="$reasons ahead"
   [ "$dirty" -eq 1 ] && reasons="$reasons dirty"
   [ "$untracked" -eq 1 ] && reasons="$reasons untracked"
   [ "$fetch_failed" -ne 0 ] && reasons="$reasons fetch-fail"
@@ -144,10 +207,23 @@ while IFS= read -r repo; do
     printf '%s\n' "$repo"
     printf '  status: %s\n' "$first_line"
     printf '  attention:%s\n' "$reasons"
+    if [ "$mode" = "run" ] && [ "$behind" -eq 1 ]; then
+      if [ "$fetch_failed" -ne 0 ]; then
+        printf '  pull: skipped (fetch failed)\n'
+      elif [ "$ahead" -ne 0 ]; then
+        printf '  pull: skipped (ahead or diverged)\n'
+      elif [ "$dirty" -ne 0 ] || [ "$untracked" -ne 0 ]; then
+        printf '  pull: skipped (dirty or untracked working tree)\n'
+      fi
+    fi
     if [ -n "$rest_lines" ]; then
       printf '%s\n' "$rest_lines" | sed 's/^/    /'
     fi
   fi
 done < "$repos_file"
 
-printf 'scanned=%s attention=%s\n' "$scanned" "$attention"
+if [ "$mode" = "run" ]; then
+  printf 'scanned=%s attention=%s pulled=%s\n' "$scanned" "$attention" "$pulled"
+else
+  printf 'scanned=%s attention=%s\n' "$scanned" "$attention"
+fi

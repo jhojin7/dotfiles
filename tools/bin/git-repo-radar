@@ -1,0 +1,153 @@
+#!/usr/bin/env bash
+# Scan local git repositories and report attention-worthy status.
+# Safe by design: fetch + status only. Never pull/merge/rebase/stash.
+
+set -u
+
+usage() {
+  cat <<'USAGE'
+Usage: git-repo-radar [ROOT ...]
+
+Scan local git repositories under ROOTs and show only repos that need attention.
+If no ROOT is provided, existing default roots are used:
+  ~/dev ~/src ~/repos ~/git ~/Projects ~/Documents/GitHub ~/workspace
+
+What it does:
+  - finds .git directories and .git files (worktrees/submodules)
+  - skips heavy directories such as node_modules, .venv, build, dist, Library, target, Pods
+  - runs: git fetch --all --prune --quiet with terminal prompts disabled
+  - runs: git status -sb
+  - reports behind/ahead/dirty/untracked/fetch-fail summaries
+
+What it never does:
+  - no git pull
+  - no merge/rebase
+  - no stash pop
+  - no working-tree changes
+USAGE
+}
+
+if [ "${1:-}" = "--help" ] || [ "${1:-}" = "-h" ]; then
+  usage
+  exit 0
+fi
+
+roots=()
+if [ "$#" -gt 0 ]; then
+  for root in "$@"; do
+    roots+=("$root")
+  done
+else
+  for root in \
+    "$HOME/dev" \
+    "$HOME/src" \
+    "$HOME/repos" \
+    "$HOME/git" \
+    "$HOME/Projects" \
+    "$HOME/Documents/GitHub" \
+    "$HOME/workspace"
+  do
+    [ -d "$root" ] && roots+=("$root")
+  done
+fi
+
+if [ "${#roots[@]}" -eq 0 ]; then
+  echo "git-repo-radar: no scan roots found" >&2
+  echo "Use: git-repo-radar ROOT [...]" >&2
+  exit 2
+fi
+
+if ! command -v git >/dev/null 2>&1; then
+  echo "git-repo-radar: git not found on PATH" >&2
+  exit 127
+fi
+
+candidates_file=$(mktemp "${TMPDIR:-/tmp}/git-repo-radar.candidates.XXXXXX") || exit 1
+repos_file=$(mktemp "${TMPDIR:-/tmp}/git-repo-radar.repos.XXXXXX") || exit 1
+trap 'rm -f "$candidates_file" "$repos_file"' EXIT INT TERM
+
+# Find both normal repos (.git directory) and worktrees/submodules (.git file).
+# Prune intentionally-heavy directories before looking for .git markers.
+for root in "${roots[@]}"; do
+  [ -d "$root" ] || continue
+  find "$root" \
+    \( -name node_modules -o -name .venv -o -name venv -o -name build -o -name dist -o -name Library -o -name target -o -name Pods -o -name .cache -o -name .pytest_cache \) -type d -prune \
+    -o \( -name .git \( -type d -o -type f \) -print \) 2>/dev/null |
+  while IFS= read -r git_marker; do
+    dirname "$git_marker"
+  done
+done | sort -u | awk '{ print length($0) "\t" $0 }' | sort -n | cut -f2- > "$candidates_file"
+
+# Keep the shallowest repo when git repositories are nested, avoiding duplicate scans
+# inside a repo checkout. This intentionally skips submodules/worktrees nested under
+# another selected repo path.
+while IFS= read -r candidate; do
+  [ -n "$candidate" ] || continue
+  nested=0
+  while IFS= read -r selected; do
+    [ -n "$selected" ] || continue
+    case "$candidate" in
+      "$selected"/*) nested=1; break ;;
+    esac
+  done < "$repos_file"
+  [ "$nested" -eq 0 ] && printf '%s\n' "$candidate" >> "$repos_file"
+done < "$candidates_file"
+
+scanned=0
+attention=0
+
+while IFS= read -r repo; do
+  [ -n "$repo" ] || continue
+  scanned=$((scanned + 1))
+
+  fetch_failed=0
+  GIT_TERMINAL_PROMPT=0 GIT_ASKPASS= git -C "$repo" fetch --all --prune --quiet >/dev/null 2>&1 || fetch_failed=1
+
+  status_output=$(git -C "$repo" status -sb 2>&1)
+  status_rc=$?
+
+  if [ "$status_rc" -ne 0 ]; then
+    attention=$((attention + 1))
+    printf '%s\n' "$repo"
+    printf '  status: failed (%s)\n' "$status_output"
+    [ "$fetch_failed" -ne 0 ] && printf '  fetch: failed\n'
+    continue
+  fi
+
+  first_line=$(printf '%s\n' "$status_output" | sed -n '1p')
+  rest_lines=$(printf '%s\n' "$status_output" | sed '1d')
+
+  reasons=""
+  case "$first_line" in
+    *behind*) reasons="$reasons behind" ;;
+  esac
+  case "$first_line" in
+    *ahead*) reasons="$reasons ahead" ;;
+  esac
+
+  dirty=0
+  untracked=0
+  if [ -n "$rest_lines" ]; then
+    if printf '%s\n' "$rest_lines" | grep -q '^?? '; then
+      untracked=1
+    fi
+    if printf '%s\n' "$rest_lines" | grep -qv '^?? '; then
+      dirty=1
+    fi
+  fi
+  [ "$dirty" -eq 1 ] && reasons="$reasons dirty"
+  [ "$untracked" -eq 1 ] && reasons="$reasons untracked"
+  [ "$fetch_failed" -ne 0 ] && reasons="$reasons fetch-fail"
+
+  if [ -n "$reasons" ]; then
+    attention=$((attention + 1))
+    printf '%s\n' "$repo"
+    printf '  status: %s\n' "$first_line"
+    printf '  attention:%s\n' "$reasons"
+    if [ -n "$rest_lines" ]; then
+      printf '%s\n' "$rest_lines" | sed 's/^/    /'
+    fi
+  fi
+done < "$repos_file"
+
+printf 'scanned=%s attention=%s\n' "$scanned" "$attention"

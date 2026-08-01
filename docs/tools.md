@@ -22,3 +22,16 @@ This repo can store small personal tools and helper scripts, but cleanup should 
 - `data-telescope.sh` likely belongs under `tools/incubator/`
 - `normalize-llm-punct-*.sh` should converge into one canonical tool
 - one-off setup scripts should move into `scripts/` or `services/` only after review
+
+## `tools/bin/git-repo-radar`
+
+Safe local git repository status radar for macOS/Linux workstations.
+
+```sh
+./tools/bin/git-repo-radar
+./tools/bin/git-repo-radar ~/dev ~/Documents/GitHub
+```
+
+Default roots are existing directories among `~/dev`, `~/src`, `~/repos`, `~/git`, `~/Projects`, `~/Documents/GitHub`, and `~/workspace`. The tool discovers normal `.git` directories plus `.git` files used by worktrees/submodules, skips heavy directories, runs `git fetch --all --prune --quiet` with prompts disabled, then reports only repos with behind/ahead/dirty/untracked/fetch-fail attention.
+
+Safety rule: it never runs `git pull`, `merge`, `rebase`, `stash pop`, or other working-tree-changing commands.

@@ -2,11 +2,11 @@
 
 ## Last loop
 
-- timestamp: 2026-07-07
-- branch: spring-cleanup
-- files changed: seeded `config/`, `stow/`, Linux target folders, package inventories, VS Code settings, and docs on top of the macOS bootstrap/doctor updates
-- checks run: `bash -n ...`, `jq empty`, `git diff --check`, `./scripts/doctor.sh --status`, `./scripts/bootstrap-macos.sh --dry-run`, `./scripts/link.sh --dry-run`, `brew bundle check --file packages/Brewfile --verbose`, direct secret grep
-- checks failed: `./scripts/link.sh --dry-run` refused existing home config files as designed; `brew bundle check`/bootstrap reported pending installs or updates; Stow simulation skipped because `stow` is not installed on PATH
+- timestamp: 2026-08-02
+- branch: feat/git-repo-radar
+- files changed: added explicit `--run`/`--execute`/`--apply` mode to `tools/bin/git-repo-radar` and documented pull behavior in `docs/tools.md`
+- checks run: `bash -n tools/bin/git-repo-radar`, `./tools/bin/git-repo-radar --help`, `./tools/bin/git-repo-radar --dry-run .`, local fixture test for clean behind repo pulled by `--run`, local fixture test for dirty behind repo skipped by `--execute`, `git diff --check`, targeted secret scan on changed files
+- checks failed: none
 
 ## Current repo shape
 

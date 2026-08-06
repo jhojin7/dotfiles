@@ -48,9 +48,11 @@ This repo is focused on being a clean, agent-runnable dotfiles workspace that ca
 ```sh
 ./scripts/doctor.sh --status
 ./scripts/link.sh --dry-run
+./tools/bin/git-repo-radar [ROOT ...]
 ```
 
 `doctor.sh` is read-only. `link.sh` defaults to dry-run and refuses to overwrite regular files or directories.
+`git-repo-radar` is a safe local repository status radar: it fetches with prompts disabled, prints `git status -sb`-based attention summaries, and never pulls/merges/rebases automatically.
 
 ## Status
 
